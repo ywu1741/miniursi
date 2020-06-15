@@ -10,7 +10,7 @@ dpath = "/Users/eden/Desktop/URSI_2020/VIDEOS/Bergstrom"
 subset = dict(frame=slice(0,None))
 
 # Determines if you want visual output
-interactive = False
+interactive = True
 output_size = 100
 
 # This is where you specify where resulting data is saved. 'dpath' is the
