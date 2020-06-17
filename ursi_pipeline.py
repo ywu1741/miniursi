@@ -10,6 +10,7 @@
 get_ipython().run_cell_magic('capture', '', '%load_ext autoreload\n%autoreload 2\nimport sys\nimport os\nos.environ["OMP_NUM_THREADS"] = "1"\nos.environ["MKL_NUM_THREADS"] = "1"\nos.environ["OPENBLAS_NUM_THREADS"] = "1"\nos.environ["NUMBA_NUM_THREADS"] = "1"\nimport gc\nimport psutil\nimport numpy as np\nimport xarray as xr\nimport holoviews as hv\nimport matplotlib.pyplot as plt\nimport bokeh.plotting as bpl\nimport dask.array as da\nimport pandas as pd\nimport dask\nimport datashader as ds\nimport itertools as itt\nimport papermill as pm\nimport ast\nimport functools as fct\nfrom holoviews.operation.datashader import datashade, regrid, dynspread\nfrom datashader.colors import Sets1to3\nfrom dask.diagnostics import ProgressBar\nfrom IPython.core.display import display, HTML')
 
 ## import config
+sys.path.append(minian_path)
 from minian.config import minian_path, dpath, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal
 
 # ## import minian
