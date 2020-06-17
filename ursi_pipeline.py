@@ -7,7 +7,32 @@
 
 # In[1]:
 
-get_ipython().run_cell_magic('capture', '', '%load_ext autoreload\n%autoreload 2\nimport sys\nimport os\nos.environ["OMP_NUM_THREADS"] = "1"\nos.environ["MKL_NUM_THREADS"] = "1"\nos.environ["OPENBLAS_NUM_THREADS"] = "1"\nos.environ["NUMBA_NUM_THREADS"] = "1"\nimport gc\nimport psutil\nimport numpy as np\nimport xarray as xr\nimport holoviews as hv\nimport matplotlib.pyplot as plt\nimport bokeh.plotting as bpl\nimport dask.array as da\nimport pandas as pd\nimport dask\nimport datashader as ds\nimport itertools as itt\nimport papermill as pm\nimport ast\nimport functools as fct\nfrom holoviews.operation.datashader import datashade, regrid, dynspread\nfrom datashader.colors import Sets1to3\nfrom dask.diagnostics import ProgressBar\nfrom IPython.core.display import display, HTML')
+get_ipython().run_cell_magic('capture', '', '%load_ext autoreload\n%autoreload 2')
+import sys
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["NUMBA_NUM_THREADS"] = "1"
+import gc
+import psutil
+import numpy as np
+import xarray as xr
+import holoviews as hv
+import matplotlib.pyplot as plt
+import bokeh.plotting as bpl
+import dask.array as da
+import pandas as pd
+import dask
+import datashader as ds
+import itertools as itt
+import papermill as pm
+import ast
+import functools as fct
+from holoviews.operation.datashader import datashade, regrid, dynspread
+from datashader.colors import Sets1to3
+from dask.diagnostics import ProgressBar
+from IPython.core.display import display, HTML
 
 ## import config
 import minian.config
