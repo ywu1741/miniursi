@@ -35,14 +35,18 @@ from dask.diagnostics import ProgressBar
 from IPython.core.display import display, HTML
 
 ## import config
-import minian.config
 from minian.config import minian_path, dpath, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal
 
 # ## import minian
 
 # In[3]:
 
-get_ipython().run_cell_magic('capture', '', 'sys.path.append(minian_path)\nfrom minian.utilities import load_params, load_videos, scale_varr, scale_varr_da, save_variable, open_minian, save_minian, handle_crash, get_optimal_chk, rechunk_like\nfrom minian.preprocessing import remove_brightspot, gradient_norm, denoise, remove_background, stripe_correction\nfrom minian.motion_correction import estimate_shifts, apply_shifts\nfrom minian.initialization import seeds_init, gmm_refine, pnr_refine, intensity_refine, ks_refine, seeds_merge, initialize\nfrom minian.cnmf import get_noise_fft, update_spatial, compute_trace, update_temporal, unit_merge, smooth_sig\nfrom minian.visualization import VArrayViewer, CNMFViewer, generate_videos, visualize_preprocess, visualize_seeds, visualize_gmm_fit, visualize_spatial_update, visualize_temporal_update, roi_draw, write_video')
+from minian.utilities import load_params, load_videos, scale_varr, scale_varr_da, save_variable, open_minian, save_minian, handle_crash, get_optimal_chk, rechunk_like
+from minian.preprocessing import remove_brightspot, gradient_norm, denoise, remove_background, stripe_correction
+from minian.motion_correction import estimate_shifts, apply_shifts
+from minian.initialization import seeds_init, gmm_refine, pnr_refine, intensity_refine, ks_refine, seeds_merge, initialize
+from minian.cnmf import get_noise_fft, update_spatial, compute_trace, update_temporal, unit_merge, smooth_sig
+from minian.visualization import VArrayViewer, CNMFViewer, generate_videos, visualize_preprocess, visualize_seeds, visualize_gmm_fit, visualize_spatial_update, visualize_temporal_update, roi_draw, write_video
 
 # ## module initialization
 
