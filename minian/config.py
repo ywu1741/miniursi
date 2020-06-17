@@ -12,7 +12,7 @@ dpath = "./videos"
 subset = dict(frame=slice(0,None))
 
 # Determines if you want visual output
-interactive = True
+interactive = False
 output_size = 100
 
 # This is where you specify where resulting data is saved. 'dpath' is the
