@@ -1,4 +1,6 @@
 ### VASSAR URSI 2020 MINISCOPE PARAMETERS ###
+# -*- coding: utf-8 -*-
+
 import numpy as np
 # Path that contains the minian folder (should be "." if working in minian env)
 minian_path = "."
@@ -111,7 +113,7 @@ param_seeds_merge = {
     'noise_freq': 0.1}
 
 # Defines how pixels are included or excluded from objects created around
-# the found seeds.'wnd’ determines the window size for calculating
+# the found seeds. "wnd" determines the window size for calculating
 # correlation with other pixels for efficiency, ‘thres_corr’ determines
 # which pixels are not part of the cell. ‘noise_freq’ should again be the
 # same as previous functions.
