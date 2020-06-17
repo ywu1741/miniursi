@@ -4,7 +4,7 @@ import numpy as np
 minian_path = "."
 
 # Directory to location of videos
-dpath = "/Users/eden/Desktop/URSI_2020/VIDEOS/Bergstrom"
+dpath = "./videos"
 
 # Determines how videos are cropped in terms of height, width, and length
 subset = dict(frame=slice(0,None))
@@ -22,7 +22,7 @@ output_size = 100
 # as you don't want to accidentally lose anything.
 param_save_minian = {
     'dpath': dpath,
-    'fname': 'minian_output',
+    'fname': 'pipeline_output',
     'backend': 'zarr',
     'meta_dict': dict(session_id=-1, session=-2, animal=-3),
     'overwrite': True}
