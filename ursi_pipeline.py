@@ -7,22 +7,20 @@
 
 # In[1]:
 
-
 get_ipython().run_cell_magic('capture', '', '%load_ext autoreload\n%autoreload 2\nimport sys\nimport os\nos.environ["OMP_NUM_THREADS"] = "1"\nos.environ["MKL_NUM_THREADS"] = "1"\nos.environ["OPENBLAS_NUM_THREADS"] = "1"\nos.environ["NUMBA_NUM_THREADS"] = "1"\nimport gc\nimport psutil\nimport numpy as np\nimport xarray as xr\nimport holoviews as hv\nimport matplotlib.pyplot as plt\nimport bokeh.plotting as bpl\nimport dask.array as da\nimport pandas as pd\nimport dask\nimport datashader as ds\nimport itertools as itt\nimport papermill as pm\nimport ast\nimport functools as fct\nfrom holoviews.operation.datashader import datashade, regrid, dynspread\nfrom datashader.colors import Sets1to3\nfrom dask.diagnostics import ProgressBar\nfrom IPython.core.display import display, HTML')
 
+## import config
+get_ipython().run_cell_magic('capture', '', 'sys.path.append(minian_path)\nfrom minian.config import minian_path, dpath, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal')
 
 # ## import minian
 
 # In[3]:
 
-
-get_ipython().run_cell_magic('capture', '', 'sys.path.append(minian_path)\nfrom minian.config import minian_path, dpath, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal\nfrom minian.utilities import load_params, load_videos, scale_varr, scale_varr_da, save_variable, open_minian, save_minian, handle_crash, get_optimal_chk, rechunk_like\nfrom minian.preprocessing import remove_brightspot, gradient_norm, denoise, remove_background, stripe_correction\nfrom minian.motion_correction import estimate_shifts, apply_shifts\nfrom minian.initialization import seeds_init, gmm_refine, pnr_refine, intensity_refine, ks_refine, seeds_merge, initialize\nfrom minian.cnmf import get_noise_fft, update_spatial, compute_trace, update_temporal, unit_merge, smooth_sig\nfrom minian.visualization import VArrayViewer, CNMFViewer, generate_videos, visualize_preprocess, visualize_seeds, visualize_gmm_fit, visualize_spatial_update, visualize_temporal_update, roi_draw, write_video')
-
+get_ipython().run_cell_magic('capture', '', 'sys.path.append(minian_path)\nfrom minian.utilities import load_params, load_videos, scale_varr, scale_varr_da, save_variable, open_minian, save_minian, handle_crash, get_optimal_chk, rechunk_like\nfrom minian.preprocessing import remove_brightspot, gradient_norm, denoise, remove_background, stripe_correction\nfrom minian.motion_correction import estimate_shifts, apply_shifts\nfrom minian.initialization import seeds_init, gmm_refine, pnr_refine, intensity_refine, ks_refine, seeds_merge, initialize\nfrom minian.cnmf import get_noise_fft, update_spatial, compute_trace, update_temporal, unit_merge, smooth_sig\nfrom minian.visualization import VArrayViewer, CNMFViewer, generate_videos, visualize_preprocess, visualize_seeds, visualize_gmm_fit, visualize_spatial_update, visualize_temporal_update, roi_draw, write_video')
 
 # ## module initialization
 
 # In[4]:
-
 
 dpath = os.path.abspath(dpath)
 if interactive:
@@ -683,7 +681,3 @@ if interactive:
 
 
 # In[ ]:
-
-
-
-
