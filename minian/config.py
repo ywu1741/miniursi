@@ -23,7 +23,7 @@ output_size = 100
 # be set to True for exploration, but be careful during data processing
 # as you don't want to accidentally lose anything.
 param_save_minian = {
-    'dpath': minian_path,
+    'dpath': dpath,
     'fname': 'pipeline_output',
     'backend': 'zarr',
     'meta_dict': dict(session_id=-1, session=-2, animal=-3),
