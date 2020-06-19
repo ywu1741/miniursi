@@ -10,7 +10,7 @@ from scipy.ndimage.measurements import center_of_mass
 from scipy.stats import pearsonr
 from scipy.spatial.distance import cdist
 from .preprocessing import remove_background
-from .motion_correction import estimate_shift_fft, apply_shifts
+from .motion_correction import estimate_shifts, apply_shifts
 from .utilities import xrconcat_recursive
 from .visualization import centroid
 from IPython.core.debugger import set_trace
@@ -304,8 +304,8 @@ def subset_pairs(A, B, tile):
     hh = (min(Ah.min(), Bh.min()), max(Ah.max(), Bh.max()))
     ww = (min(Aw.min(), Bw.min()), max(Aw.max(), Bw.max()))
     dh, dw = np.ceil(tile[0] / 2), np.ceil(tile[1] / 2)
-    tile_h = np.linspace(hh[0], hh[1], np.ceil((hh[1] - hh[0]) * 2 / tile[0]))
-    tile_w = np.linspace(ww[0], ww[1], np.ceil((ww[1] - ww[0]) * 2 / tile[1]))
+    tile_h = np.linspace(hh[0], hh[1], int(np.ceil((hh[1] - hh[0]) * 2 / tile[0])))
+    tile_w = np.linspace(ww[0], ww[1], int(np.ceil((ww[1] - ww[0]) * 2 / tile[1])))
     pairs = set()
     for h, w in itt.product(tile_h, tile_w):
         curA = A[
