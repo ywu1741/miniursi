@@ -12,7 +12,6 @@ python3 -m pip install panel==0.8.0
 python3 -m pip install bokeh==1.4.0
 python3 -m pip install bottleneck==1.3.2
 python3 -m pip install brotlipy==0.7.0
-python3 -m pip install bz2
 python3 -m pip install pycairo
 python3 -m pip install certifi==2020.4.5.1
 python3 -m pip install cffi==1.14.0
@@ -47,7 +46,7 @@ python3 -m pip install fsspec==0.7.4
 python3 -m pip install future==0.18.2
 python3 -m pip install python-gettext
 python3 -m pip install PyGObject
-python3 -m pip install python-hdf4
+python3 -m pip install h4py
 python3 -m pip install h5py
 python3 -m pip install heapdict==1.0.1
 python3 -m pip install holoviews==1.12.7
@@ -127,7 +126,7 @@ python3 -m pip install pywavelets==1.1.1
 python3 -m pip install pywinpty==0.5.7
 python3 -m pip install pyyaml==5.3.1
 python3 -m pip install pyzmq==19.0.1
-python3 -m pip install qt
+python3 -m pip install pyqt
 python3 -m pip install qtconsole==4.7.4
 python3 -m pip install qtpy==1.9.0
 python3 -m pip install regex==2020.5.14
@@ -142,7 +141,6 @@ python3 -m pip install simpleitk==1.2.4
 python3 -m pip install six==1.15.0
 python3 -m pip install sk-video==1.1.10
 python3 -m pip install sortedcontainers==2.1.0
-python3 -m pip install sqlite3
 python3 -m pip install statsmodels==0.11.1
 python3 -m pip install tblib==1.6.0
 python3 -m pip install tenacity==6.2.0
