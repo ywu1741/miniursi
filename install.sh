@@ -3,6 +3,7 @@ pip install --user av
 pip install --user panel==0.8.0
 pip install --user bokeh==1.4.0
 pip install --user bottleneck==1.3.2
+pip install --user cycler
 pip install --user Pillow==5.3.0
 pip install --user idna==2.6
 pip install --user requests==2.18.4
@@ -19,6 +20,7 @@ pip install --user pyFFTW
 pip install --user holoviews==1.12.7
 pip install --user ipython==7.12.0
 pip install --user ipython_genutils==0.2.0
+pip install --user ipywidgets
 pip install --user matplotlib==3.1.3
 pip install --user medpy==0.4.0
 pip install --user natsort==7.0.1
@@ -32,6 +34,7 @@ pip install --user pandas==1.0.1
 pip install --user papermill==2.0.0
 pip install --user param==1.9.3
 pip install --user psutil
+pip install --user pyparsing
 pip install --user pyfftw==0.12.0
 pip install --user scikit-image==0.16.2
 pip install --user scikit-learn==0.22.1
