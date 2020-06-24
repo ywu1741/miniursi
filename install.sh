@@ -44,3 +44,4 @@ pip install --user tifffile==2020.2.16
 pip install --user tqdm==4.43.0
 pip install --user xarray==0.15.0
 pip install --user zarr==2.4.0
+pip install --user gdown
