@@ -3,6 +3,10 @@ pip install --user av
 pip install --user panel==0.8.0
 pip install --user bokeh==1.4.0
 pip install --user bottleneck==1.3.2
+pip install --user Pillow==5.3.0
+pip install --user idna==2,6
+pip install --user requests==2.18.4
+pip install --user urllib3==1.22
 pip install --user pycairo
 pip install --user cvxpy==1.0.27
 pip install --user dask==2.11.0
@@ -32,6 +36,7 @@ pip install --user scikit-image==0.16.2
 pip install --user scikit-learn==0.22.1
 pip install --user scipy==1.4.1
 pip install --user scs
+pip install --user setuptools==47.1.1
 pip install --user simpleitk==1.2.4
 pip install --user sk-video==1.1.10
 pip install --user statsmodels==0.11.1
