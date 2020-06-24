@@ -31,6 +31,7 @@ pip install --user opencv-python
 pip install --user pandas==1.0.1
 pip install --user papermill==2.0.0
 pip install --user param==1.9.3
+pip install --user psutil
 pip install --user pyfftw==0.12.0
 pip install --user scikit-image==0.16.2
 pip install --user scikit-learn==0.22.1
