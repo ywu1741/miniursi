@@ -35,5 +35,3 @@ def search(service, folder_id):
 
 def upload(folder_id):
     search(DRIVE, folder_id)
-
-upload('1tr_Laq--VNw5gyVPYQgASNY3iFp9aYyX')
