@@ -14,7 +14,7 @@ dpath = "./videos"
 #timestamp), and id_dims should be a list containing metadata identifiers used
 #when analyzing the individual sessions (e.g. ['session','animal']).
 #f_pattern needs to be changed to pipeline_output when uploading to github
-f_pattern = 'minian$'
+f_pattern = 'pipeline_output$'
 id_dims = ['session']
 
 #Determines the parameters for cross registration. param_t_dist defines the
