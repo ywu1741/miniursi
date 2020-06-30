@@ -6,7 +6,7 @@ import numpy as np
 minian_path = "."
 
 # Directory to location of videos
-dpath = "/work/miniscopepipeline/miniursi/drive/Animal_14/Day_4_FC/"
+dpath = "./videos"
 
 # Determines how videos are cropped in terms of height, width, and length
 subset = dict(frame=slice(0,None))

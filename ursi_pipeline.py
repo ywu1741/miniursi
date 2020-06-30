@@ -244,3 +244,15 @@ C0_temporal_it2 = save_minian(C0_temporal_it2.rename('C0'), **param_save_minian)
 B_temporal_it2 = save_minian(B_temporal_it2.rename('bl'), **param_save_minian)
 b_spatial_it2 = save_minian(b_spatial_it2.rename('b'), **param_save_minian)
 f_spatial_it2 = save_minian(f_spatial_it2.rename('f'), **param_save_minian)
+
+# ## visualization output
+
+minian = open_minian(dpath,
+                     fname=param_save_minian['fname'],
+                     backend=param_save_minian['backend'])
+varr = load_videos(dpath, **param_load_videos)
+chk = get_optimal_chk(varr.astype(float), dim_grp=[('frame',), ('height', 'width')])
+varr = varr.chunk(dict(frame=chk['frame']))
+
+generate_videos(
+    minian, varr, dpath, param_save_minian['fname'] + ".mp4", scale='auto')
