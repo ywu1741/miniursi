@@ -110,7 +110,7 @@ param_ks_refine = {
 param_seeds_merge = {
     'thres_dist': 5,
     'thres_corr': 0.7,
-    'noise_freq': 0.1}
+    'noise_freq': 0.45}
 
 # Defines how pixels are included or excluded from objects created around
 # the found seeds. "wnd" determines the window size for calculating
@@ -120,7 +120,7 @@ param_seeds_merge = {
 param_initialize = {
     'thres_corr': 0.8,
     'wnd': 19,
-    'noise_freq': 0.1}
+    'noise_freq': 0.45}
 
 ### CNMF PARAMETERS ###
 
@@ -163,7 +163,7 @@ param_first_spatial = {
 # controls whether an scs attempt should be made (you shouldn't need to tweak
 # these). Lastly, the 'zero_thres' is set to eliminate small values.
 param_first_temporal = {
-    'noise_freq': 0.1,
+    'noise_freq': 0.45,
     'sparse_penal': 0.45,
     'p': 1,
     'add_lag': 20,
@@ -189,7 +189,7 @@ param_second_spatial = {
     'zero_thres': 'eps'}
 
 param_second_temporal = {
-    'noise_freq': 0.1,
+    'noise_freq': 0.45,
     'sparse_penal': 0.2,
     'p': 1,
     'add_lag': 20,
