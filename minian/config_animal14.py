@@ -92,7 +92,7 @@ param_seeds_init = {
 # determined by examination of the initial seeds (you'll probably come back
 # and tweak this).
 param_pnr_refine = {
-    'noise_freq': 0.06,
+    'noise_freq': 0.45,
     'thres': 1,
     'med_wnd': None}
 
@@ -110,7 +110,7 @@ param_ks_refine = {
 param_seeds_merge = {
     'thres_dist': 5,
     'thres_corr': 0.7,
-    'noise_freq': 0.06}
+    'noise_freq': 0.45}
 
 # Defines how pixels are included or excluded from objects created around
 # the found seeds. "wnd" determines the window size for calculating
@@ -120,7 +120,7 @@ param_seeds_merge = {
 param_initialize = {
     'thres_corr': 0.8,
     'wnd': 19,
-    'noise_freq': 0.06}
+    'noise_freq': 0.45}
 
 ### CNMF PARAMETERS ###
 
@@ -163,8 +163,8 @@ param_first_spatial = {
 # controls whether an scs attempt should be made (you shouldn't need to tweak
 # these). Lastly, the 'zero_thres' is set to eliminate small values.
 param_first_temporal = {
-    'noise_freq': 0.06,
-    'sparse_penal': 0.45,
+    'noise_freq': 0.45,
+    'sparse_penal': 0.2,
     'p': 1,
     'add_lag': 20,
     'use_spatial': False,
@@ -183,13 +183,13 @@ param_first_merge = {
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
     'dl_wnd': 19,
-    'sparse_penal': 0.015,
+    'sparse_penal': 0.2,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
 
 param_second_temporal = {
-    'noise_freq': 0.06,
+    'noise_freq': 0.45,
     'sparse_penal': 0.2,
     'p': 1,
     'add_lag': 20,
