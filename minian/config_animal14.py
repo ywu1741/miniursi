@@ -26,7 +26,7 @@ param_save_minian = {
     'dpath': dpath,
     'fname': 'pipeline_output',
     'backend': 'zarr',
-    'meta_dict': dict(session_id=-1, session=-2, animal=-3),
+    'meta_dict': dict(session=-1, animal=-2),
     'overwrite': True}
 
 ### PRE-PROCESSING PARAMETERS ###
@@ -92,7 +92,7 @@ param_seeds_init = {
 # determined by examination of the initial seeds (you'll probably come back
 # and tweak this).
 param_pnr_refine = {
-    'noise_freq': 0.25,
+    'noise_freq': 0.35,
     'thres': 1,
     'med_wnd': None}
 
@@ -110,7 +110,7 @@ param_ks_refine = {
 param_seeds_merge = {
     'thres_dist': 5,
     'thres_corr': 0.7,
-    'noise_freq': 0.25}
+    'noise_freq': 0.35}
 
 # Defines how pixels are included or excluded from objects created around
 # the found seeds. "wnd" determines the window size for calculating
@@ -120,7 +120,7 @@ param_seeds_merge = {
 param_initialize = {
     'thres_corr': 0.8,
     'wnd': 19,
-    'noise_freq': 0.25}
+    'noise_freq': 0.35}
 
 ### CNMF PARAMETERS ###
 
@@ -163,8 +163,8 @@ param_first_spatial = {
 # controls whether an scs attempt should be made (you shouldn't need to tweak
 # these). Lastly, the 'zero_thres' is set to eliminate small values.
 param_first_temporal = {
-    'noise_freq': 0.25,
-    'sparse_penal': 0.2,
+    'noise_freq': 0.35,
+    'sparse_penal': 0.25,
     'p': 1,
     'add_lag': 20,
     'use_spatial': False,
@@ -189,8 +189,8 @@ param_second_spatial = {
     'zero_thres': 'eps'}
 
 param_second_temporal = {
-    'noise_freq': 0.25,
-    'sparse_penal': 0.2,
+    'noise_freq': 0.35,
+    'sparse_penal': 0.25,
     'p': 1,
     'add_lag': 20,
     'use_spatial': False,
