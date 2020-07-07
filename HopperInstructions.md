@@ -64,7 +64,13 @@ To run the pipeline script in the interactive session, check that you are in the
 However, you will probably not be using interactive sessions a lot as they are a lot slower than a batch submission and a lot less informative than exploring the pipeline notebook locally to set parameters. To run the cross-registration script in the interactive session, make sure you have run the pipeline script on all the videos to be cross registered. Then change the parameter ‘dpath’ in the config_crossreg.py file within the minian folder to the directory containing the videos to be cross-registered and their corresponding pipeline_output folders (e.g. to cross register all sessions for Animal15, dpath should be set to ./videos/Animal15). Note that each pair of videos + output should be in a unique folder.  
 <code>$ python3 ursi_crossreg.py</code>
 
-### 8: Creating and running a batch script
+### 8: Use DeepLabCut
+To use DeepLabCut, make sure you are in the correct directory and start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
+<code>$ conda activate DLC-GPU</code>  
+Once this is done, all DeepLabCut commands will be available (more details to come). To exit the DeepLabCut environment, just type:  
+<code>$ conda deactivate</code>  
+
+### X: Creating and running a batch script
 Batch scripts in Hopper need to be created and uploaded to our shared environment before they can be called. The script contains resource requests and other job options for the batch. An example of this kind of script is shown below:  
 ![batch1](/supplemental_images/batch1.png "Batch1")  
   
