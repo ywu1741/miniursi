@@ -38,6 +38,7 @@ Then the folder ID to be put in the upload function is:
 <code>1-3_0s_102qDE6NeWmyP6byVD2XIdN5hd</code>  
 All that’s left is to execute the upload function once you are in Hopper:  
 <code>$ python3 upload.py</code>  
+**Note the section below does not yet work - command tries to identify a new randomly named directory, waiting for dev response**  
 If there are individual videos that were not transferred due to not being in the correct original folder or some other issue, you can enter the following command to add that single video to the google drive:  
 <code>gdown https://drive.google.com/uc?id=file_id -O output_directory</code>  
 The file_id will be different for each video and can be found by looking at the video’s sharable link on Google Drive the same way you get a folder ID. The output_directory is where you want the video to end up. Make sure to cohesively store it in the folder structure you want to work with and to put the correct file name and type at the end of the command. So, if I wanted to name a file ‘Test.avi’ and store it in my downloads on my computer, I would write this at the end of the gdown command:  
@@ -67,7 +68,25 @@ However, you will probably not be using interactive sessions a lot as they are a
 ### 8: Use DeepLabCut
 To use DeepLabCut, make sure you are in the correct directory and start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
 <code>$ conda activate DLC-GPU</code>  
-Once this is done, all DeepLabCut commands will be available (more details to come). To exit the DeepLabCut environment, just type:  
+Then, change directory to the DLC docker folder:  
+<code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code>  
+Once there, you can run the following command to make a container necessary to run the docker (which essentially creates GPU compatibility with DLC):  
+<code>$ GPU=1 bash ./dlc-docker run -e USER_HOME=$HOME/work/miniscopepipeline/miniursi --name *container_name* vassar/dlcdocker</code>  
+If you get an error saying that your container name (specified by whatever you enter as *container_name*) is already in use, either pick a different name or remove the existing container with that name using the following command:  
+<code>$ docker rm *container_name*</code>  
+Once you have successfully built the container, run the following line to enter it:  
+<code>$ docker exec --user $USER -it *container_name* /bin/bash</code>  
+To make sure that you aren't calling the GUI (which is not usable in Hopper), run the following command before you start python:  
+<code>$ export DLClight=True</code>  
+Then open an iPython session...  
+<code>$ ipython </code>  
+...and import DLC:  
+<code>import deeplabcut</code>  
+Once this is done, all DeepLabCut commands will be available (more details to come). To exit iPython and return to the container, type:  
+<code>exit()</code>  
+To exit the container, just enter:  
+<code>exit</code>  
+To exit the DeepLabCut environment, type:  
 <code>$ conda deactivate</code>  
 
 ### X: Creating and running a batch script
