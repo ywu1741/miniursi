@@ -26,7 +26,7 @@ param_save_minian = {
     'dpath': dpath,
     'fname': 'pipeline_output',
     'backend': 'zarr',
-    'meta_dict': dict(session_id=-1, session=-2, animal=-3),
+    'meta_dict': dict(session=-1, animal=-2),
     'overwrite': True}
 
 ### PRE-PROCESSING PARAMETERS ###
