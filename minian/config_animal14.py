@@ -86,7 +86,7 @@ param_seeds_init = {
     'stp_size': 1000,
     'nchunk': 100,
     'max_wnd': 19,
-    'diff_thres': 4}
+    'diff_thres': 3}
 
 # Defines the peak-to-noise ratio. This is put in 'noise_freq' once it is
 # determined by examination of the initial seeds (you'll probably come back
@@ -142,7 +142,7 @@ param_get_noise = {
 ## CELL SIZE NEEDED
 param_first_spatial = {
     'dl_wnd': 19,
-    'sparse_penal': 0.2,
+    'sparse_penal': 0.1,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
@@ -164,7 +164,7 @@ param_first_spatial = {
 # these). Lastly, the 'zero_thres' is set to eliminate small values.
 param_first_temporal = {
     'noise_freq': 0.45,
-    'sparse_penal': 0.25,
+    'sparse_penal': 0.05,
     'p': 1,
     'add_lag': 20,
     'use_spatial': False,
@@ -183,14 +183,14 @@ param_first_merge = {
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
     'dl_wnd': 19,
-    'sparse_penal': 0.2,
+    'sparse_penal': 0.005,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
 
 param_second_temporal = {
     'noise_freq': 0.45,
-    'sparse_penal': 0.25,
+    'sparse_penal': 0.05,
     'p': 1,
     'add_lag': 20,
     'use_spatial': False,
