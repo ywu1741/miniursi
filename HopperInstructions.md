@@ -66,11 +66,11 @@ To run the cross-registration script in the interactive session, make sure you h
 <code>$ python3 ursi_crossreg.py</code>
 
 ### 8: Use DeepLabCut
-To use DeepLabCut, make sure you are in the correct directory and start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
+To use DeepLabCut, first make sure you are in the docker directory:  
+<code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code> 
+Then start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
 <code>$ conda activate DLC-GPU</code>  
-Then, change directory to the DLC docker folder:  
-<code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code>  
-Once there, you can run the following command to make a container necessary to run the docker (which essentially creates GPU compatibility with DLC):  
+Once the DLC-GPU environment is running, execute the following command to make a container necessary to run the docker (which essentially creates GPU compatibility with DLC):  
 <code>$ GPU=1 bash ./dlc-docker run -d --name *container_name* vassar/dlcdocker</code>  
 If you get an error saying that your container name (specified by whatever you enter as *container_name*) is already in use, you have a couple options. You can use that container by running the exec step (see below), or you can stop and remove the existing container with that name using the following commands:  
 <code>$ docker stop *container_name*</code>  
