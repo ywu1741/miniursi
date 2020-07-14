@@ -71,10 +71,11 @@ To use DeepLabCut, make sure you are in the correct directory and start an inter
 Then, change directory to the DLC docker folder:  
 <code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code>  
 Once there, you can run the following command to make a container necessary to run the docker (which essentially creates GPU compatibility with DLC):  
-<code>$ GPU=1 bash ./dlc-docker run -e USER_HOME=$HOME/work/miniscopepipeline/miniursi --name *container_name* vassar/dlcdocker</code>  
-If you get an error saying that your container name (specified by whatever you enter as *container_name*) is already in use, either pick a different name or remove the existing container with that name using the following command:  
+<code>$ GPU=1 bash ./dlc-docker run -d --name *container_name* vassar/dlcdocker</code>  
+If you get an error saying that your container name (specified by whatever you enter as *container_name*) is already in use, you have a couple options. You can use that container by running the exec step (see below), or you can stop and remove the existing container with that name using the following commands:  
+<code>$ docker stop *container_name*</code>  
 <code>$ docker rm *container_name*</code>  
-Once you have successfully built the container, run the following line to enter it:  
+Once the container you want to use is running, run the following line to enter it:  
 <code>$ docker exec --user $USER -it *container_name* /bin/bash</code>  
 To make sure that you aren't calling the GUI (which is not usable in Hopper), run the following command before you start python:  
 <code>$ export DLClight=True</code>  
