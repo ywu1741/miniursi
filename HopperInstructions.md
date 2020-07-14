@@ -67,7 +67,7 @@ To run the cross-registration script in the interactive session, make sure you h
 
 ### 8: Use DeepLabCut
 To use DeepLabCut, first make sure you are in the docker directory:  
-<code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code> 
+<code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code>  
 Then start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
 <code>$ conda activate DLC-GPU</code>  
 Once the DLC-GPU environment is running, execute the following command to make a container necessary to run the docker (which essentially creates GPU compatibility with DLC):  
