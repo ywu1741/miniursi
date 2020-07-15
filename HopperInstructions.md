@@ -65,7 +65,16 @@ To run the pipeline script in the interactive session, check that you are in the
 To run the cross-registration script in the interactive session, make sure you have run the pipeline script on all the videos to be cross registered. Then change the parameter ‘dpath’ in the config_crossreg.py file within the minian folder to the directory containing the videos to be cross-registered and their corresponding pipeline_output folders (e.g. to cross register all sessions for Animal15, dpath should be set to ./videos/Animal15). Note that each pair of videos + output should be in a unique folder.  
 <code>$ python3 ursi_crossreg.py</code>
 
-### 8: Use DeepLabCut
+### 8: Configure DeepLabCut Environment
+These steps only need to be done once to make sure the the DLC environment is configured with your user. First, start an interactive session as specified in (7). Then, enter this command to make sure conda is configured with your user:  
+<code>/anaconda3/condabin/conda init bash</code>  
+If there are changes made in this step, you may have to restart the terminal for them to take effect. Once that is set, run the following command to create the DLC-GPU environment:  
+<code>conda env create -f /tmp/DLC-GPU.yaml</code>  
+Once the environment has been created, you should be able to use the command  
+<code>$ conda activate DLC-GPU</code>  
+to activate the environment. Then, see below for the steps on how to run DLC.  
+
+### 9: Use DeepLabCut  
 To use DeepLabCut, first make sure you are in the docker directory:  
 <code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code>  
 Then start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
