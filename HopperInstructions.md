@@ -39,7 +39,7 @@ Then the folder ID to be put in the upload function is:
 <code>1-3_0s_102qDE6NeWmyP6byVD2XIdN5hd</code>  
 All that’s left is to execute the upload function once you are in Hopper:  
 <code>$ python3 /work/miniscopepipeline/miniursi/drive/upload.py</code>  
-Note that *you will have to have shared permissions of the folder to anyone with the link for this process to work*. Otherwise you will get several permission denied errors. 
+Note that *you will have to have shared permissions of the folder to anyone with the link for this process to work*. Otherwise you will get several permission denied errors.  
 **Note the section below does not yet work - command tries to identify a new randomly named directory, waiting for dev response**  
 If there are individual videos that were not transferred due to not being in the correct original folder or some other issue, you can enter the following command to add that single video to the google drive:  
 <code>gdown https://drive.google.com/uc?id=file_id -O output_directory</code>  
