@@ -28,10 +28,20 @@ def search(service, folder_id, output_folder):
             print(parents_found),
             if folder_id in (file.get('parents')):
                 print ('Found file: %s (%s)' % (file.get('name'), file.get('id')))
-                gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), output_folder, (file.get('name')))
+                request = drive_service.files().get_media(fileId=file.get('id)),
+                fh = io.BytesIO(),
+                downloader = MediaIoBaseDownload(fh, request),
+                done = False,
+                while done is False:
+                    status, done = downloader.next_chunk()
+                    print "Download %d%%." % int(status.progress() * 100) 
         page_token = response.get('nextPageToken', None)
         if page_token is None:
             break
 
+## gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), output_folder, (file.get('name')))
+            
+           
+            
 def upload(folder_id, output_folder):
     search(DRIVE, folder_id, output_folder)
