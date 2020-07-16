@@ -15,7 +15,7 @@ if not creds or creds.invalid:
 
 DRIVE = discovery.build('drive', 'v3', http=creds.authorize(Http()))
 
-def search(service, folder_id, output_folder):
+def search(service, folder_id):
     page_token = None
     while True:
         response = service.files().list(q="mimeType='video/avi'",
@@ -30,19 +30,20 @@ def search(service, folder_id, output_folder):
             print(parents_found),
             if folder_id in (file.get('parents')):
                 print ('Found file: %s (%s)' % (file.get('name'), file.get('id')))
-                request = service.files().get_media(fileId=file.get('id'))
-                fh = io.BytesIO()
-                downloader = MediaIoBaseDownload(fh, request)
-                done = False
-                while done is False:
-                    status, done = downloader.next_chunk()
+                gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), (file.get('name')))
         page_token = response.get('nextPageToken', None)
         if page_token is None:
             break
 
-## gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), output_folder, (file.get('name')))
-            
+## The commands below use language from the Google API rather than gdown, however it runs into errors because
+## Hopper is not an interactive interface. This is close to working but I am unsure if it will work with the format.
+# request = service.files().get_media(fileId=file.get('id'))
+                # fh = io.BytesIO()
+                # downloader = MediaIoBaseDownload(fh, request)
+                # done = False
+                # while done is False:
+                    # status, done = downloader.next_chunk()
            
             
-def upload(folder_id, output_folder):
-    search(DRIVE, folder_id, output_folder)
+def upload(folder_id):
+    search(DRIVE, folder_id)
