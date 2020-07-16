@@ -28,7 +28,7 @@ Add videos to the shared Google Drive “Miniscope Videos”. Make sure you keep
 In Hopper, move to the drive folder in miniursi:  
 <code>$ cd drive</code>  
 Then run the drive_list.py script using:  
-<code>$ python3 /work/miniscopepipeline/miniursi/drive/drive_list.py</code>  
+<code>$ python3 drive_list.py</code>  
 This will create the functions necessary to pull files from Google Drive.  
 Then, make the specific folders you want to download the videos into by continuing to use the cd command. If you want to make a new folder, use the following command:  
 <code>$ mkdir *folder_name*</code>  
