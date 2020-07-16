@@ -27,18 +27,20 @@ Type the following command to execute the bash script and download the necessary
 Add videos to the shared Google Drive “Miniscope Videos”. Make sure you keep videos in appropriate folders otherwise this process will be much harder. For each video, make sure that it is shared so anyone with the link can see the file.  
 In Hopper, move to the drive folder in miniursi:  
 <code>$ cd drive</code>  
-Within drive, move to the specific folder you want to download the videos into by continuing to use the cd command. If you want to make a new folder, use the following command:  
-<code>$ mkdir *folder_name*</code>  
-To prepare to transfer an entire folder of videos to Hopper, first make sure you are logged in to the Google API website on a browser (accessible from drive). Then run the drive_list.py script using:  
+Then run the drive_list.py script using:  
 <code>$ python3 /work/miniscopepipeline/miniursi/drive/drive_list.py</code>  
-This will create the functions necessary to pull files from Google Drive. Before transferring, you need to set the folder ID in the upload.py file (this for now should be done in GitHub followed by a git pull command once you are in our directory in Hopper). There is only one line in the file that needs to be edited which looks like this:  
+This will create the functions necessary to pull files from Google Drive.  
+Then, make the specific folders you want to download the videos into by continuing to use the cd command. If you want to make a new folder, use the following command:  
+<code>$ mkdir *folder_name*</code>  
+To prepare to transfer an entire folder of videos to Hopper, you need to set the folder ID in the upload.py file (this for now should be done in GitHub followed by a git pull command once you are in our directory in Hopper). There is only one line in the file that needs to be edited which looks like this:  
 <code>upload('1tr_Laq--VNw5gyVPYQgASNY3iFp9aYyX')</code>  
 The folder ID is the string in the upload function. You can find it by looking at the folder’s sharable link on Google Drive. For example, if I have the following link:
 <code>https://drive.google.com/file/d/1-3_0s_102qDE6NeWmyP6byVD2XIdN5hd/view?usp=sharing</code>  
 Then the folder ID to be put in the upload function is:  
 <code>1-3_0s_102qDE6NeWmyP6byVD2XIdN5hd</code>  
 All that’s left is to execute the upload function once you are in Hopper:  
-<code>$ python3 /work/miniscopepipeline/miniursi/drive/upload.py</code>  
+<code>$ python3 upload.py</code>  
+**Note that right now the upload function only works in the drive folder. Calling it from any other folder leads to the API taking over your terminal trying to get you to sign in and eventually crashing (I think Hopper confuses it). After you upload the videos you will have to use Cyberduck or the Microsoft equivalent cloud storage browser to move them into the folder you made for them.**  
 Note that *you will have to have shared permissions of the folder to anyone with the link for this process to work*. Otherwise you will get several permission denied errors.  
 **Note the section below does not yet work - command tries to identify a new randomly named directory, waiting for dev response**  
 If there are individual videos that were not transferred due to not being in the correct original folder or some other issue, you can enter the following command to add that single video to the google drive:  
