@@ -13,7 +13,7 @@ if not creds or creds.invalid:
 
 DRIVE = discovery.build('drive', 'v3', http=creds.authorize(Http()))
 
-def search(service, folder_id):
+def search(service, folder_id, output_folder):
     page_token = None
     while True:
         response = service.files().list(q="mimeType='video/avi'",
@@ -28,10 +28,10 @@ def search(service, folder_id):
             print(parents_found),
             if folder_id in (file.get('parents')):
                 print ('Found file: %s (%s)' % (file.get('name'), file.get('id')))
-                gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), (file.get('name')))
+                gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), '%s%s' % output_folder, (file.get('name')))
         page_token = response.get('nextPageToken', None)
         if page_token is None:
             break
 
-def upload(folder_id):
-    search(DRIVE, folder_id)
+def upload(folder_id, output_folder):
+    search(DRIVE, folder_id, output_folder)
