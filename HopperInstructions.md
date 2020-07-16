@@ -40,6 +40,11 @@ Then the folder ID to be put in the upload function is:
 <code>1-3_0s_102qDE6NeWmyP6byVD2XIdN5hd</code>  
 All that’s left is to execute the upload function once you are in Hopper:  
 <code>$ python3 upload.py</code>  
+Alternatively, if you don't want to change things in Github, you can open an ipython session:  
+<code>$ ipython</code>  
+and then run the following lines:  
+<code>>>> from drive_list import SCOPES, store, creds, DRIVE, search, upload</code>  
+<code>>>> upload('*folder_id*')</code>  
 **Note that right now the upload function only works in the drive folder. Calling it from any other folder leads to the API taking over your terminal trying to get you to sign in and eventually crashing (I think Hopper confuses it). After you upload the videos you will have to use Cyberduck or the Microsoft equivalent cloud storage browser to move them into the folder you made for them.**  
 Note that *you will have to have shared permissions of the folder to anyone with the link for this process to work*. Otherwise you will get several permission denied errors.  
 **Note the section below does not yet work - command tries to identify a new randomly named directory, waiting for dev response**  
