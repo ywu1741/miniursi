@@ -34,7 +34,6 @@ def search(service, folder_id, output_folder):
                 done = False
                 while done is False:
                     status, done = downloader.next_chunk()
-                    print "Download %d%%." % int(status.progress() * 100) 
         page_token = response.get('nextPageToken', None)
         if page_token is None:
             break
