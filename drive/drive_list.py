@@ -28,7 +28,7 @@ def search(service, folder_id, output_folder):
             print(parents_found),
             if folder_id in (file.get('parents')):
                 print ('Found file: %s (%s)' % (file.get('name'), file.get('id')))
-                request = drive_service.files().get_media(fileId=file.get('id))
+                request = drive_service.files().get_media(fileId=file.get('id'))
                 fh = io.BytesIO()
                 downloader = MediaIoBaseDownload(fh, request)
                 done = False
