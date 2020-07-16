@@ -28,7 +28,7 @@ def search(service, folder_id, output_folder):
             print(parents_found),
             if folder_id in (file.get('parents')):
                 print ('Found file: %s (%s)' % (file.get('name'), file.get('id')))
-                gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), ('%s%s' % output_folder, (file.get('name'))))
+                gdown.download(('https://drive.google.com/uc?id=%s' % (file.get('id'))), ("'%s''%s'" % output_folder, (file.get('name'))))
         page_token = response.get('nextPageToken', None)
         if page_token is None:
             break
