@@ -154,7 +154,7 @@ param_first_spatial = {
 # determines what proportion of a cell's spatial footprint needs to be covered
 # to be considered "overlapping": the default is good for data that is compact
 # in cells. 'p' should be set to 2 if the calcium transients have an observable
-# rise time and should be set to 1 id the rise-time is faster than the sampling
+# rise time and should be set to 1 if the rise-time is faster than the sampling
 # rate. 'sparse_penal' can be tweaked to adjust the balance between fidelity
 # and sparsity. 'noise_freq' is the threshold for determining noise in the
 # 'update_temporal' function. 'use_smooth' determines if noise is accounted
