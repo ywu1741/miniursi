@@ -110,7 +110,7 @@ param_ks_refine = {
 param_seeds_merge = {
     'thres_dist': 15,
     'thres_corr': 0.75,
-    'noise_freq': 'envelope'}
+    'noise_freq': 0.2}
 
 # Defines how pixels are included or excluded from objects created around
 # the found seeds. "wnd" determines the window size for calculating
