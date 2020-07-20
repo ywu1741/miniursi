@@ -3,6 +3,8 @@
 #Path that contains the minian folder
 minian_path = "."
 
+dpath = "./videos/ENTER/PATH/HERE"
+
 #Specify the file information. f_pattern is a regular expression identifying
 #the naming pattern of minian output folders with a regex expression
 #(e.g. 'minian$', or r'minian\.[0-9]+$' if data is batch processed and has a
