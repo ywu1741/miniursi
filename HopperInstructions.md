@@ -66,13 +66,12 @@ These commands will generally tell you what parts of Hopper are in use and what 
 From the /work/miniscopepipeline/miniursi directory enter the following command:  
 <code>$ vi ursi_pipeline.py</code>  
 This will open the file within your terminal and make it available for editing. Next, scroll down to where it says '## import config'. You should see something like this:  
-<code>## import config
+<code>## import config  
 dpath = "./videos/Mouse_16/Day_2_FC"  
-  
 from minian.config_mouse16 import minian_path, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal</code>  
 We need to edit the dpath variable and the config file you want to use. To edit these variables, hit 'i' on the keyboard to allow editing of the file. First, specify the path to the folder containing the videos you want to analyze. This should generally be in the format of './videos/...' as you are working from the miniursi folder. Then, you enter the config file you want in the format of <code>minian.*chosen_config_file*</code> at the beginning of the next chunk of code. **BE VERY CAREFUL TO NOT EDIT ANYTHING ELSE IN THIS FILE, OTHERWISE THE PIPELINE WILL NOT WORK.** However, if the file does get bugged in this process, you can simply pull the original from git and try again. Once you are done editing, hit the <code>esc</code> key. Then type <code>ZZ</code> to save and exit. 
 
-### 7: Run an interactive session
+### 8: Run an interactive session
 To start an interactive session, type:  
 <code>$ srun -N 1 --ntasks-per-node=16 --pty bash</code>  
 where -N is the number of nodes you are requesting, and ntasks-per-node is how many tasks you want to run in parallel on each node. To start an interactive session on the GPU, type:  
@@ -84,7 +83,7 @@ To run the pipeline script in the interactive session, check that you are in the
 To run the cross-registration script in the interactive session, make sure you have run the pipeline script on all the videos to be cross registered. Then change the parameter ‘dpath’ in the config_crossreg.py file within the minian folder to the directory containing the videos to be cross-registered and their corresponding pipeline_output folders (e.g. to cross register all sessions for Animal15, dpath should be set to ./videos/Animal15). Note that each pair of videos + output should be in a unique folder.  
 <code>$ python3 ursi_crossreg.py</code>
 
-### 8: Configure DeepLabCut Environment
+### 9: Configure DeepLabCut Environment
 These steps only need to be done once to make sure the the DLC environment is configured with your user. First, start an interactive session as specified in (7). Then, enter this command to make sure conda is configured with your user:  
 <code>/anaconda3/condabin/conda init bash</code>  
 If there are changes made in this step, you may have to restart the terminal for them to take effect. Once that is set, run the following command to create the DLC-GPU environment:  
@@ -93,7 +92,7 @@ Once the environment has been created, you should be able to use the command
 <code>$ conda activate DLC-GPU</code>  
 to activate the environment. Then, see below for the steps on how to run DLC.  
 
-### 9: Use DeepLabCut  
+### 10: Use DeepLabCut  
 To use DeepLabCut, first make sure you are in the docker directory:  
 <code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code>  
 Then start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
