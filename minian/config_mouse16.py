@@ -7,6 +7,8 @@ from ursi_pipeline import dpath
 # Path that contains the minian folder (should be "." if working in minian env)
 minian_path = "."
 
+dpath = "./videos/ENTER/PATH/HERE"
+
 # Determines how videos are cropped in terms of height, width, and length
 subset = None
 
