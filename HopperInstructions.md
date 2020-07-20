@@ -67,9 +67,13 @@ From the /work/miniscopepipeline/miniursi directory enter the following command:
 <code>$ vi ursi_pipeline.py</code>  
 This will open the file within your terminal and make it available for editing. Next, scroll down to where it says '## import config'. You should see something like this:  
 <code>## import config</code>  
-<code>dpath = "./videos/Mouse_16/Day_2_FC"</code>  
-<code>from minian.config_mouse16 import minian_path, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal</code>  
-We need to edit the dpath variable and the config file you want to use. To edit these variables, hit 'i' on the keyboard to allow editing of the file. First, specify the path to the folder containing the videos you want to analyze. This should generally be in the format of './videos/...' as you are working from the miniursi folder. Then, you enter the config file you want in the format of <code>minian.*chosen_config_file*</code> at the beginning of the next chunk of code. **BE VERY CAREFUL TO NOT EDIT ANYTHING ELSE IN THIS FILE, OTHERWISE THE PIPELINE WILL NOT WORK.** However, if the file does get bugged in this process, you can simply pull the original from git and try again. Once you are done editing, hit the <code>esc</code> key. Then type <code>ZZ</code> to save and exit.  
+<code>from minian.config_mouse16 import minian_path,...</code>  
+We need to edit the file to call the config file you want to use. First, hit 'i' on the keyboard to allow editing of the file. Then, enter the config file you want in the format of <code>minian.*chosen_config_file*</code> at the beginning of the chunk of code. **BE VERY CAREFUL TO NOT EDIT ANYTHING ELSE IN THIS FILE, OTHERWISE THE PIPELINE WILL NOT WORK.** However, if the file does get bugged in this process, you can simply pull the original from git and try again. Once you are done editing, hit the <code>esc</code> key. Then type <code>ZZ</code> to save and exit.  
+Then, change directory to the minian directory using  
+<code>$ cd minian</code>  
+From there, access the editor with the config file you plan to use:  
+<code>$ vi *config_name*</code>  
+Once in the editor, move down to the <code>dpath</code> variable and enter the path to the folder of videos you want to analyze in string format. **AGAIN, DO NOT EDIT ANYTHING ELSE.** Once you are done, exit in the same way and return to the miniursi directory using <code>$ cd ..</code>.  
 Note that these are the same steps necessary to specify the path to the correct folder in the crossregistration file, the only difference is that you will enter <code>$ vi ursi_crossreg.py</code> to access that file. 
 
 ### 8: Run an interactive session
