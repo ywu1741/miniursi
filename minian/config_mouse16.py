@@ -100,7 +100,7 @@ param_pnr_refine = {
 # the remaining seeds and elminates those with a normal distribution of
 # flourescence (as it should be somewhat bimodal).
 param_ks_refine = {
-    'sig': 0.05}
+    'sig': 0.01}
 
 # Defines how initial seeds are merged together into spatial objects based
 # on spatial and temporal correlation. 'thres_dist' is the threshold for
@@ -108,8 +108,8 @@ param_ks_refine = {
 # for Pearson correlations between pairs of seeds (should be relatively high)
 # 'noise_freq' should be the same as defined in param_pnr_refine.
 param_seeds_merge = {
-    'thres_dist': 15,
-    'thres_corr': 0.75,
+    'thres_dist': 20,
+    'thres_corr': 0.65,
     'noise_freq': 0.2}
 
 # Defines how pixels are included or excluded from objects created around
@@ -141,8 +141,8 @@ param_get_noise = {
 # the radius of the largest cell.
 ## CELL SIZE NEEDED
 param_first_spatial = {
-    'dl_wnd': 15,
-    'sparse_penal': 0.1,
+    'dl_wnd': 19,
+    'sparse_penal': 0.25,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
@@ -182,7 +182,7 @@ param_first_merge = {
 
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
-    'dl_wnd': 15,
+    'dl_wnd': 19,
     'sparse_penal': 0.005,
     'update_background': True,
     'normalize': True,
