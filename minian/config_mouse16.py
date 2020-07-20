@@ -175,7 +175,7 @@ param_first_temporal = {
 # Again merges components into the same cell. ‘thres_corr’ is the pearson
 # threshold to determine which units belong in the same cell.
 param_first_merge = {
-    'thres_corr': 0.8}
+    'thres_corr': 0.7}
 
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
