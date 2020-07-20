@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+from ursi_pipeline import dpath
+
 # Path that contains the minian folder (should be "." if working in minian env)
 minian_path = "."
 
