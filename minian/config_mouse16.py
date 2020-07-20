@@ -5,9 +5,6 @@ import numpy as np
 # Path that contains the minian folder (should be "." if working in minian env)
 minian_path = "."
 
-# Directory to location of videos
-dpath = "./videos/Mouse_16/Day_2_FC"
-
 # Determines how videos are cropped in terms of height, width, and length
 subset = None
 
