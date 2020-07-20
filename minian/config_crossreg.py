@@ -3,11 +3,6 @@
 #Path that contains the minian folder
 minian_path = "."
 
-#Directory that contains the videos to be cross-registered and their
-#corresponding minian output data (each pair of videos+output should be in a
-#unique folder)
-dpath = "./videos/Animal_14/Day_4_FC"
-
 #Specify the file information. f_pattern is a regular expression identifying
 #the naming pattern of minian output folders with a regex expression
 #(e.g. 'minian$', or r'minian\.[0-9]+$' if data is batch processed and has a
