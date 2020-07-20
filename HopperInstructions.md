@@ -66,9 +66,9 @@ These commands will generally tell you what parts of Hopper are in use and what 
 From the /work/miniscopepipeline/miniursi directory enter the following command:  
 <code>$ vi ursi_pipeline.py</code>  
 This will open the file within your terminal and make it available for editing. Next, scroll down to where it says '## import config'. You should see something like this:  
-<code>## import config  
-dpath = "./videos/Mouse_16/Day_2_FC"  
-from minian.config_mouse16 import minian_path, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal</code>  
+<code>## import config</code>  
+<code>dpath = "./videos/Mouse_16/Day_2_FC"</code>  
+<code>from minian.config_mouse16 import minian_path, subset, interactive, output_size, param_save_minian, param_load_videos, param_denoise, param_background_removal, subset_mc, param_estimate_shift, param_seeds_init, param_pnr_refine, param_ks_refine, param_seeds_merge, param_initialize, param_get_noise, param_first_spatial, param_first_temporal, param_first_merge, param_second_spatial, param_second_temporal</code>  
 We need to edit the dpath variable and the config file you want to use. To edit these variables, hit 'i' on the keyboard to allow editing of the file. First, specify the path to the folder containing the videos you want to analyze. This should generally be in the format of './videos/...' as you are working from the miniursi folder. Then, you enter the config file you want in the format of <code>minian.*chosen_config_file*</code> at the beginning of the next chunk of code. **BE VERY CAREFUL TO NOT EDIT ANYTHING ELSE IN THIS FILE, OTHERWISE THE PIPELINE WILL NOT WORK.** However, if the file does get bugged in this process, you can simply pull the original from git and try again. Once you are done editing, hit the <code>esc</code> key. Then type <code>ZZ</code> to save and exit. 
 
 ### 8: Run an interactive session
