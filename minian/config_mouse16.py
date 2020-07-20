@@ -138,7 +138,7 @@ param_get_noise = {
 # the radius of the largest cell.
 ## CELL SIZE NEEDED
 param_first_spatial = {
-    'dl_wnd': 19,
+    'dl_wnd': 10,
     'sparse_penal': 0.25,
     'update_background': True,
     'normalize': True,
@@ -179,8 +179,8 @@ param_first_merge = {
 
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
-    'dl_wnd': 19,
-    'sparse_penal': 0.005,
+    'dl_wnd': 10,
+    'sparse_penal': 0.05,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
