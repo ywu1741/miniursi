@@ -50,14 +50,14 @@ param_load_videos = {
 ## CELL SIZE NEEDED
 param_denoise = {
     'method': 'median',
-    'ksize': 9}
+    'ksize': 12}
 
 # Describes how background noise is removed. 'wnd' should be set to the
 # expected size of the largest cell diameter in pixels.
 ## CELL SIZE NEEDED
 param_background_removal = {
     'method': 'tophat',
-    'wnd': 20}
+    'wnd': 25}
 
 # Describes some parameters for motion correction. 'max_shift' is how many
 # pixels are trimmed around the edge while 'on' determines which frame is
@@ -92,7 +92,7 @@ param_seeds_init = {
 # determined by examination of the initial seeds (you'll probably come back
 # and tweak this).
 param_pnr_refine = {
-    'noise_freq': 0.2,
+    'noise_freq': 0.25,
     'thres': 1,
     'med_wnd': None}
 
@@ -109,8 +109,8 @@ param_ks_refine = {
 # 'noise_freq' should be the same as defined in param_pnr_refine.
 param_seeds_merge = {
     'thres_dist': 20,
-    'thres_corr': 0.65,
-    'noise_freq': 0.2}
+    'thres_corr': 0.7,
+    'noise_freq': 0.25}
 
 # Defines how pixels are included or excluded from objects created around
 # the found seeds. "wnd" determines the window size for calculating
@@ -119,8 +119,8 @@ param_seeds_merge = {
 # same as previous functions.
 param_initialize = {
     'thres_corr': 0.8,
-    'wnd': 20,
-    'noise_freq': 0.2}
+    'wnd': 25,
+    'noise_freq': 0.25}
 
 ### CNMF PARAMETERS ###
 
@@ -141,8 +141,8 @@ param_get_noise = {
 # the radius of the largest cell.
 ## CELL SIZE NEEDED
 param_first_spatial = {
-    'dl_wnd': 10,
-    'sparse_penal': 0.25,
+    'dl_wnd': 20,
+    'sparse_penal': 0.2,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
@@ -163,7 +163,7 @@ param_first_spatial = {
 # controls whether an scs attempt should be made (you shouldn't need to tweak
 # these). Lastly, the 'zero_thres' is set to eliminate small values.
 param_first_temporal = {
-    'noise_freq': 0.2,
+    'noise_freq': 0.25,
     'sparse_penal': 0.05,
     'p': 1,
     'add_lag': 20,
@@ -178,18 +178,18 @@ param_first_temporal = {
 # Again merges components into the same cell. ‘thres_corr’ is the pearson
 # threshold to determine which units belong in the same cell.
 param_first_merge = {
-    'thres_corr': 0.7}
+    'thres_corr': 0.8}
 
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
-    'dl_wnd': 10,
+    'dl_wnd': 20,
     'sparse_penal': 0.05,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
 
 param_second_temporal = {
-    'noise_freq': 0.02,
+    'noise_freq': 0.25,
     'sparse_penal': 0.05,
     'p': 1,
     'add_lag': 20,
