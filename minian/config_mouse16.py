@@ -50,14 +50,14 @@ param_load_videos = {
 ## CELL SIZE NEEDED
 param_denoise = {
     'method': 'median',
-    'ksize': 19}
+    'ksize': 7}
 
 # Describes how background noise is removed. 'wnd' should be set to the
 # expected size of the largest cell diameter in pixels.
 ## CELL SIZE NEEDED
 param_background_removal = {
     'method': 'tophat',
-    'wnd': 40}
+    'wnd': 15}
 
 # Describes some parameters for motion correction. 'max_shift' is how many
 # pixels are trimmed around the edge while 'on' determines which frame is
@@ -81,12 +81,12 @@ param_estimate_shift = {
 # 'stp_size' will make the process faster and cleaner.
 ## CELL SIZE NEEDED
 param_seeds_init = {
-    'wnd_size': 2000,
+    'wnd_size': 2500,
     'method': 'rolling',
-    'stp_size': 1000,
+    'stp_size': 1500,
     'nchunk': 100,
     'max_wnd': 20,
-    'diff_thres': 1.5}
+    'diff_thres': 2}
 
 # Defines the peak-to-noise ratio. This is put in 'noise_freq' once it is
 # determined by examination of the initial seeds (you'll probably come back
@@ -108,7 +108,7 @@ param_ks_refine = {
 # for Pearson correlations between pairs of seeds (should be relatively high)
 # 'noise_freq' should be the same as defined in param_pnr_refine.
 param_seeds_merge = {
-    'thres_dist': 5,
+    'thres_dist': 7,
     'thres_corr': 0.7,
     'noise_freq': 0.3}
 
@@ -118,7 +118,7 @@ param_seeds_merge = {
 # which pixels are not part of the cell. ‘noise_freq’ should again be the
 # same as previous functions.
 param_initialize = {
-    'thres_corr': 0.8,
+    'thres_corr': 0.7,
     'wnd': 15,
     'noise_freq': 0.3}
 
@@ -141,8 +141,8 @@ param_get_noise = {
 # the radius of the largest cell.
 ## CELL SIZE NEEDED
 param_first_spatial = {
-    'dl_wnd': 19,
-    'sparse_penal': 0.35,
+    'dl_wnd': 15,
+    'sparse_penal': 0.3,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
@@ -166,7 +166,7 @@ param_first_temporal = {
     'noise_freq': 0.1,
     'sparse_penal': 0.45,
     'p': 1,
-    'add_lag': 20,
+    'add_lag': 30,
     'use_spatial': False,
     'jac_thres': 0.2,
     'zero_thres': 1e-8,
@@ -182,17 +182,17 @@ param_first_merge = {
 
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
-    'dl_wnd': 29,
-    'sparse_penal': 0.015,
+    'dl_wnd': 15,
+    'sparse_penal': 0.025,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
 
 param_second_temporal = {
     'noise_freq': 0.1,
-    'sparse_penal': 0.2,
+    'sparse_penal': 0.25,
     'p': 1,
-    'add_lag': 20,
+    'add_lag': 30,
     'use_spatial': False,
     'jac_thres': 0.2,
     'zero_thres': 1e-8,
