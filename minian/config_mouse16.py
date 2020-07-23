@@ -164,7 +164,7 @@ param_first_spatial = {
 # these). Lastly, the 'zero_thres' is set to eliminate small values.
 param_first_temporal = {
     'noise_freq': 0.1,
-    'sparse_penal': 0.45,
+    'sparse_penal': 0.35,
     'p': 1,
     'add_lag': 30,
     'use_spatial': False,
