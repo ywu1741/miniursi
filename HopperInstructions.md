@@ -122,12 +122,12 @@ To exit the container, just enter:
 To exit the DeepLabCut environment, type:  
 <code>$ conda deactivate</code>  
 
-### X: Creating and running a batch script
+### X: Creating and running a batch script - FOR FUTURE/NOT YET CONFIGURED ON HOPPER
 Batch scripts in Hopper need to be created and uploaded to our shared environment before they can be called. The script contains resource requests and other job options for the batch. An example of this kind of script is shown below:  
-![batch1](/supplemental_images/batch1.png "Batch1")  
+![batch1](/img/batch1.png "Batch1")  
   
 The batch script is made up of a header (where you can see all the #SBATCH calls) and the commands to execute the job. The description for most of the header variables are below:  
-![batch2](/supplemental_images/batch2.png "Batch2")  
+![batch2](/img/batch2.png "Batch2")  
   
 Following the header, the commands of the script are meant to reference the locations of the working directory for the batch and the program file that will be called (in our case the miniscope pipeline). Note that for our project we are going to be using the gpu so make sure to request the gpu partition in the script not general or emc.  
 Once the script has been created locally, you can upload it to our shared directory in Hopper in two ways:  
