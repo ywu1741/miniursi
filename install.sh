@@ -51,3 +51,11 @@ pip install --user zarr==2.4.0
 pip install --user gdown
 pip install --user google-api-python-client
 pip install --user oauth2client
+
+# pip install --user deeplabcut
+# pip install --user \
+#     -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-16.04 \
+#     wxPython
+# pip install --user wxPython
+
+pip install --user tensorflow
