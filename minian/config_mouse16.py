@@ -6,7 +6,7 @@ import numpy as np
 # Path that contains the minian folder (should be "." if working in minian env)
 minian_path = "."
 
-dpath = "./videos/ENTER/PATH/HERE"
+dpath = "./videos/Mouse_16/ENTER/PATH/HERE"
 
 # Determines how videos are cropped in terms of height, width, and length
 subset = None
@@ -41,7 +41,7 @@ param_save_minian = {
 param_load_videos = {
     'pattern': 'msCam[0-9]+\.avi$',
     'dtype': np.uint8,
-    'downsample': dict(frame=2),
+    'downsample': None, #dict(frame=2),
     'downsample_strategy': 'subset'}
 
 # Describes how the denoising is accomplished.'ksize' should be set to about
@@ -164,9 +164,9 @@ param_first_spatial = {
 # these). Lastly, the 'zero_thres' is set to eliminate small values.
 param_first_temporal = {
     'noise_freq': 0.1,
-    'sparse_penal': 0.5,
+    'sparse_penal': 0.25,
     'p': 1,
-    'add_lag': 30,
+    'add_lag': 20,
     'use_spatial': False,
     'jac_thres': 0.2,
     'zero_thres': 1e-8,
@@ -183,7 +183,7 @@ param_first_merge = {
 # Same concepts as first spatial update and first temporal update.
 param_second_spatial = {
     'dl_wnd': 15,
-    'sparse_penal': 0.025,
+    'sparse_penal': 0.015,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
@@ -192,7 +192,7 @@ param_second_temporal = {
     'noise_freq': 0.1,
     'sparse_penal': 0.25,
     'p': 1,
-    'add_lag': 30,
+    'add_lag': 20,
     'use_spatial': False,
     'jac_thres': 0.2,
     'zero_thres': 1e-8,
