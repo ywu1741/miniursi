@@ -41,7 +41,7 @@ param_save_minian = {
 param_load_videos = {
     'pattern': 'msCam[0-9]+\.avi$',
     'dtype': np.uint8,
-    'downsample': dict(frame=2),
+    'downsample': False #dict(frame=2),
     'downsample_strategy': 'subset'}
 
 # Describes how the denoising is accomplished.'ksize' should be set to about
