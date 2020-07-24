@@ -1,0 +1,166 @@
+---
+title: "Freezing Behavior Detection"
+output: html_notebook
+---
+This R-Notebook provides a way to use outputs from DeepLabCut to extract freezing behaviors of the mouse
+
+
+load needed libraries
+```{r message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+import dataset
+**change file name as needed
+**make sure that the csv file is in the same folder ans this r markdown
+```{r message=FALSE, warning=FALSE}
+data <- read_csv("test.csv")
+```
+
+extract data for the movement of snout
+select coordinates for snout only
+select only the ones with >=60% likelihood
+**change the '1:4' to c(1, srange) if snout is not the first body part, srange is the column indexes containing x, y, and likelihood for snout
+```{r}
+snout <- data[-c(1:2),1:4]
+colnames(snout) <- c("frame", "x", "y", "likelihood")
+snout <- snout %>%
+  mutate(x = as.numeric(x), y=as.numeric(y)) %>%
+  filter(likelihood >= 0.6)
+```
+
+add new column of movement of snout between 2 frames and then avg across three frames
+```{r}
+movement = c()
+i <- 1
+while(i <= nrow(snout) - 2)
+{
+  movement[i] <- sqrt(abs(snout[i+1, 2] - snout[i, 2])^2 + abs(snout[i+1, 3] - snout[i, 3]))
+  i <- i +1
+}
+movement[nrow(snout)-1] <- movement[i-1]
+movement[nrow(snout)] <- movement[i-1]
+movement <- as.numeric(movement)
+snout$movement <- movement
+i <- 2
+while(i <= nrow(snout) - 1)
+{
+  snout$movement[i] <- (movement[i-1] + movement[i] + movement[i+1]) / 3
+  i <- i + 1
+}
+
+```
+
+
+determine freezing frames
+change unit to cm/s
+mark y/n - movement < 4cm/s (need to calculate according to fps and pixel-per-cm)
+**set frame per second to fps
+**set pixel per cm to pcm
+```{r}
+fps <- 20
+pcm <- 23
+snout$movement <- snout$movement * fps / pcm
+snout$move4 <- snout$movement >= 4
+```
+
+determine freezing behavior
+for loop - slow movement >=1.28s (need fps)
+```{r}
+period <- as.integer(1.28*fps)
+freeze <- c()
+i <- 0
+r <- 1
+v <- r + period - i
+while (r <= nrow(snout) - period + 1){
+  if (snout$move4[r] == FALSE){
+    i <- i + 1
+    v <- r + period - i
+    if (i < period){
+      if(sum(snout$move4[r:v]) == 0){
+        freeze[r] <- TRUE
+      } else{
+        freeze[r] <- FALSE
+      }
+    } else{
+      freeze[r] <- TRUE
+    }
+  } else{
+    i <- 0
+    freeze[r] <- FALSE
+  }
+  r <- r + 1
+}
+
+v <- nrow(snout)
+while(r <= v){
+  if(snout$move4[r] == FALSE){
+    i <- i + 1
+    if(i < period){
+      if(sum(snout$move4[r:v] < 1)){
+        freeze[r] <- TRUE
+      } else{
+        freeze[r] <- FALSE
+      }
+    } else{
+      freeze[r] <- TRUE
+    }
+  } else{
+    freeze[r] <- FALSE
+    break
+  }
+  r <- r + 1
+}
+
+if(r < nrow(snout)){
+  freeze[r:v] <- FALSE
+}
+
+snout$freeze <- freeze
+```
+
+store start frame, stop frame, and duration (in seconds) in a separate dataframe
+```{r}
+start <- c()
+stop <- c()
+i <- 0
+j <- 0
+r <- 1
+while (r <= nrow(snout)){
+  if (snout$freeze[r] == TRUE){
+    i <- i + 1
+    j <- 0
+    if (i == 1){
+      start <- append(start, snout$frame[r])
+    }
+  } else{
+    j <- j + 1
+    i <- 0
+    if (j == 1){
+      stop <- append(stop, snout$frame[r-1])
+    }
+  }
+  r <- r + 1
+}
+
+if(snout$freeze[r-1]==TRUE){
+  stop <- append(stop, snout$frame[r-1])
+}
+
+freeze_data <- data.frame('StartFrame' = start, 'StopFrame' = stop) %>%
+  mutate(StartFrame=as.numeric(as.character(StartFrame)), StopFrame=as.numeric(as.character(StopFrame))) %>%
+  mutate(Duration = StopFrame/fps - StartFrame/fps)
+
+```
+
+output results in csv
+**change paths as needed, remember to name the output files
+```{r}
+write_csv(snout, '/Users/asus/Desktop/URSI/snout.csv')
+write_csv(freeze_data, '/Users/asus/Desktop/URSI/freeze.csv')
+```
+
+visualizations (to be added)
+
