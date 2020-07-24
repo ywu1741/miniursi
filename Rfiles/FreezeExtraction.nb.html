@@ -1753,38 +1753,86 @@ summary {
 <p>load needed libraries</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGdncGxvdDIpXG5gYGAifQ== -->
-<pre class="r"><code>library(readr)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShyZWFkcilcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGdncGxvdDIpXG5gYGBcbmBgYCJ9 -->
+<pre class="r"><code>```r
+library(readr)
 library(dplyr)
 library(ggplot2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>import dataset <strong>change file name as needed </strong>make sure that the csv file is in the same folder ans this r markdown</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YSA8LSByZWFkX2NzdihcInRlc3QuY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>data &lt;- read_csv(&quot;test.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>extract data for the movement of snout select coordinates for snout only select only the ones with &gt;=60% likelihood **change the ‘1:4’ to c(1, srange) if snout is not the first body part, srange is the column indexes containing x, y, and likelihood for snout</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc25vdXQgPC0gZGF0YVstYygxOjIpLDE6NF1cbmNvbG5hbWVzKHNub3V0KSA8LSBjKFwiZnJhbWVcIiwgXCJ4XCIsIFwieVwiLCBcImxpa2VsaWhvb2RcIilcbnNub3V0IDwtIHNub3V0ICU+JVxuICBtdXRhdGUoeCA9IGFzLm51bWVyaWMoeCksIHk9YXMubnVtZXJpYyh5KSkgJT4lXG4gIGZpbHRlcihsaWtlbGlob29kID49IDAuNilcbmBgYCJ9 -->
-<pre class="r"><code>snout &lt;- data[-c(1:2),1:4]
-colnames(snout) &lt;- c(&quot;frame&quot;, &quot;x&quot;, &quot;y&quot;, &quot;likelihood&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+import dataset
+**change file name as needed
+**make sure that the csv file is in the same folder ans this r markdown
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZGF0YSA8LSByZWFkX2NzdihcXHRlc3QuY3N2XFwpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+data &lt;- read_csv(\test.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+extract data for the movement of snout
+select coordinates for snout only
+select only the ones with &gt;=60% likelihood
+**change the &#39;1:4&#39; to c(1, srange) if snout is not the first body part, srange is the column indexes containing x, y, and likelihood for snout
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc25vdXQgPC0gZGF0YVstYygxOjIpLDE6NF1cbmNvbG5hbWVzKHNub3V0KSA8LSBjKFxcZnJhbWVcXCwgXFx4XFwsIFxceVxcLCBcXGxpa2VsaWhvb2RcXClcbnNub3V0IDwtIHNub3V0ICU+JVxuICBtdXRhdGUoeCA9IGFzLm51bWVyaWMoeCksIHk9YXMubnVtZXJpYyh5KSkgJT4lXG4gIGZpbHRlcihsaWtlbGlob29kID49IDAuNilcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+snout &lt;- data[-c(1:2),1:4]
+colnames(snout) &lt;- c(\frame\, \x\, \y\, \likelihood\)
 snout &lt;- snout %&gt;%
   mutate(x = as.numeric(x), y=as.numeric(y)) %&gt;%
   filter(likelihood &gt;= 0.6)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>add new column of movement of snout between 2 frames and then avg across three frames</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW92ZW1lbnQgPSBjKClcbmkgPC0gMVxud2hpbGUoaSA8PSBucm93KHNub3V0KSAtIDIpXG57XG4gIG1vdmVtZW50W2ldIDwtIHNxcnQoYWJzKHNub3V0W2krMSwgMl0gLSBzbm91dFtpLCAyXSleMiArIGFicyhzbm91dFtpKzEsIDNdIC0gc25vdXRbaSwgM10pKVxuICBpIDwtIGkgKzFcbn1cbm1vdmVtZW50W25yb3coc25vdXQpLTFdIDwtIG1vdmVtZW50W2ktMV1cbm1vdmVtZW50W25yb3coc25vdXQpXSA8LSBtb3ZlbWVudFtpLTFdXG5tb3ZlbWVudCA8LSBhcy5udW1lcmljKG1vdmVtZW50KVxuc25vdXQkbW92ZW1lbnQgPC0gbW92ZW1lbnRcbmkgPC0gMlxud2hpbGUoaSA8PSBucm93KHNub3V0KSAtIDEpXG57XG4gIHNub3V0JG1vdmVtZW50W2ldIDwtIChtb3ZlbWVudFtpLTFdICsgbW92ZW1lbnRbaV0gKyBtb3ZlbWVudFtpKzFdKSAvIDNcbiAgaSA8LSBpICsgMVxufVxuXG5gYGAifQ== -->
-<pre class="r"><code>movement = c()
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+add new column of movement of snout between 2 frames and then avg across three frames
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubW92ZW1lbnQgPSBjKClcbmkgPC0gMVxud2hpbGUoaSA8PSBucm93KHNub3V0KSAtIDIpXG57XG4gIG1vdmVtZW50W2ldIDwtIHNxcnQoYWJzKHNub3V0W2krMSwgMl0gLSBzbm91dFtpLCAyXSleMiArIGFicyhzbm91dFtpKzEsIDNdIC0gc25vdXRbaSwgM10pKVxuICBpIDwtIGkgKzFcbn1cbm1vdmVtZW50W25yb3coc25vdXQpLTFdIDwtIG1vdmVtZW50W2ktMV1cbm1vdmVtZW50W25yb3coc25vdXQpXSA8LSBtb3ZlbWVudFtpLTFdXG5tb3ZlbWVudCA8LSBhcy5udW1lcmljKG1vdmVtZW50KVxuc25vdXQkbW92ZW1lbnQgPC0gbW92ZW1lbnRcbmkgPC0gMlxud2hpbGUoaSA8PSBucm93KHNub3V0KSAtIDEpXG57XG4gIHNub3V0JG1vdmVtZW50W2ldIDwtIChtb3ZlbWVudFtpLTFdICsgbW92ZW1lbnRbaV0gKyBtb3ZlbWVudFtpKzFdKSAvIDNcbiAgaSA8LSBpICsgMVxufVxuXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+movement = c()
 i &lt;- 1
 while(i &lt;= nrow(snout) - 2)
 {
@@ -1802,25 +1850,59 @@ while(i &lt;= nrow(snout) - 1)
   i &lt;- i + 1
 }
 </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>determine freezing frames change unit to cm/s mark y/n - movement &lt; 4cm/s (need to calculate according to fps and pixel-per-cm) <strong>set frame per second to fps </strong>set pixel per cm to pcm</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnBzIDwtIDIwXG5wY20gPC0gMjNcbnNub3V0JG1vdmVtZW50IDwtIHNub3V0JG1vdmVtZW50ICogZnBzIC8gcGNtXG5zbm91dCRtb3ZlNCA8LSBzbm91dCRtb3ZlbWVudCA+PSA0XG5gYGAifQ== -->
-<pre class="r"><code>fps &lt;- 20
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+
+determine freezing frames
+change unit to cm/s
+mark y/n - movement &lt; 4cm/s (need to calculate according to fps and pixel-per-cm)
+**set frame per second to fps
+**set pixel per cm to pcm
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZnBzIDwtIDIwXG5wY20gPC0gMjNcbnNub3V0JG1vdmVtZW50IDwtIHNub3V0JG1vdmVtZW50ICogZnBzIC8gcGNtXG5zbm91dCRtb3ZlNCA8LSBzbm91dCRtb3ZlbWVudCA+PSA0XG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+fps &lt;- 20
 pcm &lt;- 23
 snout$movement &lt;- snout$movement * fps / pcm
 snout$move4 &lt;- snout$movement &gt;= 4</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>determine freezing behavior for loop - slow movement &gt;=1.28s (need fps)</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVyaW9kIDwtIGFzLmludGVnZXIoMS4yOCpmcHMpXG5mcmVlemUgPC0gYygpXG5pIDwtIDBcbnIgPC0gMVxudiA8LSByICsgcGVyaW9kIC0gaVxud2hpbGUgKHIgPD0gbnJvdyhzbm91dCkgLSBwZXJpb2QgKyAxKXtcbiAgaWYgKHNub3V0JG1vdmU0W3JdID09IEZBTFNFKXtcbiAgICBpIDwtIGkgKyAxXG4gICAgdiA8LSByICsgcGVyaW9kIC0gaVxuICAgIGlmIChpIDwgcGVyaW9kKXtcbiAgICAgIGlmKHN1bShzbm91dCRtb3ZlNFtyOnZdKSA9PSAwKXtcbiAgICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICAgIH0gZWxzZXtcbiAgICAgICAgZnJlZXplW3JdIDwtIEZBTFNFXG4gICAgICB9XG4gICAgfSBlbHNle1xuICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICB9XG4gIH0gZWxzZXtcbiAgICBpIDwtIDBcbiAgICBmcmVlemVbcl0gPC0gRkFMU0VcbiAgfVxuICByIDwtIHIgKyAxXG59XG5cbnYgPC0gbnJvdyhzbm91dClcbndoaWxlKHIgPD0gdil7XG4gIGlmKHNub3V0JG1vdmU0W3JdID09IEZBTFNFKXtcbiAgICBpIDwtIGkgKyAxXG4gICAgaWYoaSA8IHBlcmlvZCl7XG4gICAgICBpZihzdW0oc25vdXQkbW92ZTRbcjp2XSA8IDEpKXtcbiAgICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICAgIH0gZWxzZXtcbiAgICAgICAgZnJlZXplW3JdIDwtIEZBTFNFXG4gICAgICB9XG4gICAgfSBlbHNle1xuICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICB9XG4gIH0gZWxzZXtcbiAgICBmcmVlemVbcl0gPC0gRkFMU0VcbiAgICBicmVha1xuICB9XG4gIHIgPC0gciArIDFcbn1cblxuaWYociA8IG5yb3coc25vdXQpKXtcbiAgZnJlZXplW3I6dl0gPC0gRkFMU0Vcbn1cblxuc25vdXQkZnJlZXplIDwtIGZyZWV6ZVxuYGBgIn0= -->
-<pre class="r"><code>period &lt;- as.integer(1.28*fps)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+determine freezing behavior
+for loop - slow movement &gt;=1.28s (need fps)
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucGVyaW9kIDwtIGFzLmludGVnZXIoMS4yOCpmcHMpXG5mcmVlemUgPC0gYygpXG5pIDwtIDBcbnIgPC0gMVxudiA8LSByICsgcGVyaW9kIC0gaVxud2hpbGUgKHIgPD0gbnJvdyhzbm91dCkgLSBwZXJpb2QgKyAxKXtcbiAgaWYgKHNub3V0JG1vdmU0W3JdID09IEZBTFNFKXtcbiAgICBpIDwtIGkgKyAxXG4gICAgdiA8LSByICsgcGVyaW9kIC0gaVxuICAgIGlmIChpIDwgcGVyaW9kKXtcbiAgICAgIGlmKHN1bShzbm91dCRtb3ZlNFtyOnZdKSA9PSAwKXtcbiAgICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICAgIH0gZWxzZXtcbiAgICAgICAgZnJlZXplW3JdIDwtIEZBTFNFXG4gICAgICB9XG4gICAgfSBlbHNle1xuICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICB9XG4gIH0gZWxzZXtcbiAgICBpIDwtIDBcbiAgICBmcmVlemVbcl0gPC0gRkFMU0VcbiAgfVxuICByIDwtIHIgKyAxXG59XG5cbnYgPC0gbnJvdyhzbm91dClcbndoaWxlKHIgPD0gdil7XG4gIGlmKHNub3V0JG1vdmU0W3JdID09IEZBTFNFKXtcbiAgICBpIDwtIGkgKyAxXG4gICAgaWYoaSA8IHBlcmlvZCl7XG4gICAgICBpZihzdW0oc25vdXQkbW92ZTRbcjp2XSA8IDEpKXtcbiAgICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICAgIH0gZWxzZXtcbiAgICAgICAgZnJlZXplW3JdIDwtIEZBTFNFXG4gICAgICB9XG4gICAgfSBlbHNle1xuICAgICAgZnJlZXplW3JdIDwtIFRSVUVcbiAgICB9XG4gIH0gZWxzZXtcbiAgICBmcmVlemVbcl0gPC0gRkFMU0VcbiAgICBicmVha1xuICB9XG4gIHIgPC0gciArIDFcbn1cblxuaWYociA8IG5yb3coc25vdXQpKXtcbiAgZnJlZXplW3I6dl0gPC0gRkFMU0Vcbn1cblxuc25vdXQkZnJlZXplIDwtIGZyZWV6ZVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+period &lt;- as.integer(1.28*fps)
 freeze &lt;- c()
 i &lt;- 0
 r &lt;- 1
@@ -1870,14 +1952,28 @@ if(r &lt; nrow(snout)){
 }
 
 snout$freeze &lt;- freeze</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>store start frame, stop frame, and duration (in seconds) in a separate dataframe</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RhcnQgPC0gYygpXG5zdG9wIDwtIGMoKVxuaSA8LSAwXG5qIDwtIDBcbnIgPC0gMVxud2hpbGUgKHIgPD0gbnJvdyhzbm91dCkpe1xuICBpZiAoc25vdXQkZnJlZXplW3JdID09IFRSVUUpe1xuICAgIGkgPC0gaSArIDFcbiAgICBqIDwtIDBcbiAgICBpZiAoaSA9PSAxKXtcbiAgICAgIHN0YXJ0IDwtIGFwcGVuZChzdGFydCwgc25vdXQkZnJhbWVbcl0pXG4gICAgfVxuICB9IGVsc2V7XG4gICAgaiA8LSBqICsgMVxuICAgIGkgPC0gMFxuICAgIGlmIChqID09IDEpe1xuICAgICAgc3RvcCA8LSBhcHBlbmQoc3RvcCwgc25vdXQkZnJhbWVbci0xXSlcbiAgICB9XG4gIH1cbiAgciA8LSByICsgMVxufVxuXG5pZihzbm91dCRmcmVlemVbci0xXT09VFJVRSl7XG4gIHN0b3AgPC0gYXBwZW5kKHN0b3AsIHNub3V0JGZyYW1lW3ItMV0pXG59XG5cbmZyZWV6ZV9kYXRhIDwtIGRhdGEuZnJhbWUoJ1N0YXJ0RnJhbWUnID0gc3RhcnQsICdTdG9wRnJhbWUnID0gc3RvcCkgJT4lXG4gIG11dGF0ZShTdGFydEZyYW1lPWFzLm51bWVyaWMoYXMuY2hhcmFjdGVyKFN0YXJ0RnJhbWUpKSwgU3RvcEZyYW1lPWFzLm51bWVyaWMoYXMuY2hhcmFjdGVyKFN0b3BGcmFtZSkpKSAlPiVcbiAgbXV0YXRlKER1cmF0aW9uID0gU3RvcEZyYW1lL2ZwcyAtIFN0YXJ0RnJhbWUvZnBzKVxuXG5gYGAifQ== -->
-<pre class="r"><code>start &lt;- c()
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+store start frame, stop frame, and duration (in seconds) in a separate dataframe
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3RhcnQgPC0gYygpXG5zdG9wIDwtIGMoKVxuaSA8LSAwXG5qIDwtIDBcbnIgPC0gMVxud2hpbGUgKHIgPD0gbnJvdyhzbm91dCkpe1xuICBpZiAoc25vdXQkZnJlZXplW3JdID09IFRSVUUpe1xuICAgIGkgPC0gaSArIDFcbiAgICBqIDwtIDBcbiAgICBpZiAoaSA9PSAxKXtcbiAgICAgIHN0YXJ0IDwtIGFwcGVuZChzdGFydCwgc25vdXQkZnJhbWVbcl0pXG4gICAgfVxuICB9IGVsc2V7XG4gICAgaiA8LSBqICsgMVxuICAgIGkgPC0gMFxuICAgIGlmIChqID09IDEpe1xuICAgICAgc3RvcCA8LSBhcHBlbmQoc3RvcCwgc25vdXQkZnJhbWVbci0xXSlcbiAgICB9XG4gIH1cbiAgciA8LSByICsgMVxufVxuXG5pZihzbm91dCRmcmVlemVbci0xXT09VFJVRSl7XG4gIHN0b3AgPC0gYXBwZW5kKHN0b3AsIHNub3V0JGZyYW1lW3ItMV0pXG59XG5cbmZyZWV6ZV9kYXRhIDwtIGRhdGEuZnJhbWUoJ1N0YXJ0RnJhbWUnID0gc3RhcnQsICdTdG9wRnJhbWUnID0gc3RvcCkgJT4lXG4gIG11dGF0ZShTdGFydEZyYW1lPWFzLm51bWVyaWMoYXMuY2hhcmFjdGVyKFN0YXJ0RnJhbWUpKSwgU3RvcEZyYW1lPWFzLm51bWVyaWMoYXMuY2hhcmFjdGVyKFN0b3BGcmFtZSkpKSAlPiVcbiAgbXV0YXRlKER1cmF0aW9uID0gU3RvcEZyYW1lL2ZwcyAtIFN0YXJ0RnJhbWUvZnBzKVxuXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+start &lt;- c()
 stop &lt;- c()
 i &lt;- 0
 j &lt;- 0
@@ -1907,22 +2003,37 @@ freeze_data &lt;- data.frame(&#39;StartFrame&#39; = start, &#39;StopFrame&#39; =
   mutate(StartFrame=as.numeric(as.character(StartFrame)), StopFrame=as.numeric(as.character(StopFrame))) %&gt;%
   mutate(Duration = StopFrame/fps - StartFrame/fps)
 </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>output results in csv **change paths as needed, remember to name the output files</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGVfY3N2KHNub3V0LCAnL1VzZXJzL2FzdXMvRGVza3RvcC9VUlNJL3Nub3V0LmNzdicpXG53cml0ZV9jc3YoZnJlZXplX2RhdGEsICcvVXNlcnMvYXN1cy9EZXNrdG9wL1VSU0kvZnJlZXplLmNzdicpXG5gYGAifQ== -->
-<pre class="r"><code>write_csv(snout, &#39;/Users/asus/Desktop/URSI/snout.csv&#39;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+output results in csv
+**change paths as needed, remember to name the output file
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud3JpdGVfY3N2KHNub3V0LCAnL1VzZXJzL2FzdXMvRGVza3RvcC9VUlNJL3Nub3V0LmNzdicpXG53cml0ZV9jc3YoZnJlZXplX2RhdGEsICcvVXNlcnMvYXN1cy9EZXNrdG9wL1VSU0kvZnJlZXplLmNzdicpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+write_csv(snout, &#39;/Users/asus/Desktop/URSI/snout.csv&#39;)
 write_csv(freeze_data, &#39;/Users/asus/Desktop/URSI/freeze.csv&#39;)</code></pre>
+<p>```</p>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>visualizations (to be added)</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkZyZWV6aW5nIEJlaGF2aW9yIERldGVjdGlvbiINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQpUaGlzIFItTm90ZWJvb2sgcHJvdmlkZXMgYSB3YXkgdG8gdXNlIG91dHB1dHMgZnJvbSBEZWVwTGFiQ3V0IHRvIGV4dHJhY3QgZnJlZXppbmcgYmVoYXZpb3JzIG9mIHRoZSBtb3VzZQ0KDQoNCmxvYWQgbmVlZGVkIGxpYnJhcmllcw0KYGBge3IgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0NCmxpYnJhcnkocmVhZHIpDQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShnZ3Bsb3QyKQ0KYGBgDQoNCmltcG9ydCBkYXRhc2V0DQoqKmNoYW5nZSBmaWxlIG5hbWUgYXMgbmVlZGVkDQoqKm1ha2Ugc3VyZSB0aGF0IHRoZSBjc3YgZmlsZSBpcyBpbiB0aGUgc2FtZSBmb2xkZXIgYW5zIHRoaXMgciBtYXJrZG93bg0KYGBge3IgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0NCmRhdGEgPC0gcmVhZF9jc3YoInRlc3QuY3N2IikNCmBgYA0KDQpleHRyYWN0IGRhdGEgZm9yIHRoZSBtb3ZlbWVudCBvZiBzbm91dA0Kc2VsZWN0IGNvb3JkaW5hdGVzIGZvciBzbm91dCBvbmx5DQpzZWxlY3Qgb25seSB0aGUgb25lcyB3aXRoID49NjAlIGxpa2VsaWhvb2QNCioqY2hhbmdlIHRoZSAnMTo0JyB0byBjKDEsIHNyYW5nZSkgaWYgc25vdXQgaXMgbm90IHRoZSBmaXJzdCBib2R5IHBhcnQsIHNyYW5nZSBpcyB0aGUgY29sdW1uIGluZGV4ZXMgY29udGFpbmluZyB4LCB5LCBhbmQgbGlrZWxpaG9vZCBmb3Igc25vdXQNCmBgYHtyfQ0Kc25vdXQgPC0gZGF0YVstYygxOjIpLDE6NF0NCmNvbG5hbWVzKHNub3V0KSA8LSBjKCJmcmFtZSIsICJ4IiwgInkiLCAibGlrZWxpaG9vZCIpDQpzbm91dCA8LSBzbm91dCAlPiUNCiAgbXV0YXRlKHggPSBhcy5udW1lcmljKHgpLCB5PWFzLm51bWVyaWMoeSkpICU+JQ0KICBmaWx0ZXIobGlrZWxpaG9vZCA+PSAwLjYpDQpgYGANCg0KYWRkIG5ldyBjb2x1bW4gb2YgbW92ZW1lbnQgb2Ygc25vdXQgYmV0d2VlbiAyIGZyYW1lcyBhbmQgdGhlbiBhdmcgYWNyb3NzIHRocmVlIGZyYW1lcw0KYGBge3J9DQptb3ZlbWVudCA9IGMoKQ0KaSA8LSAxDQp3aGlsZShpIDw9IG5yb3coc25vdXQpIC0gMikNCnsNCiAgbW92ZW1lbnRbaV0gPC0gc3FydChhYnMoc25vdXRbaSsxLCAyXSAtIHNub3V0W2ksIDJdKV4yICsgYWJzKHNub3V0W2krMSwgM10gLSBzbm91dFtpLCAzXSkpDQogIGkgPC0gaSArMQ0KfQ0KbW92ZW1lbnRbbnJvdyhzbm91dCktMV0gPC0gbW92ZW1lbnRbaS0xXQ0KbW92ZW1lbnRbbnJvdyhzbm91dCldIDwtIG1vdmVtZW50W2ktMV0NCm1vdmVtZW50IDwtIGFzLm51bWVyaWMobW92ZW1lbnQpDQpzbm91dCRtb3ZlbWVudCA8LSBtb3ZlbWVudA0KaSA8LSAyDQp3aGlsZShpIDw9IG5yb3coc25vdXQpIC0gMSkNCnsNCiAgc25vdXQkbW92ZW1lbnRbaV0gPC0gKG1vdmVtZW50W2ktMV0gKyBtb3ZlbWVudFtpXSArIG1vdmVtZW50W2krMV0pIC8gMw0KICBpIDwtIGkgKyAxDQp9DQoNCmBgYA0KDQoNCmRldGVybWluZSBmcmVlemluZyBmcmFtZXMNCmNoYW5nZSB1bml0IHRvIGNtL3MNCm1hcmsgeS9uIC0gbW92ZW1lbnQgPCA0Y20vcyAobmVlZCB0byBjYWxjdWxhdGUgYWNjb3JkaW5nIHRvIGZwcyBhbmQgcGl4ZWwtcGVyLWNtKQ0KKipzZXQgZnJhbWUgcGVyIHNlY29uZCB0byBmcHMNCioqc2V0IHBpeGVsIHBlciBjbSB0byBwY20NCmBgYHtyfQ0KZnBzIDwtIDIwDQpwY20gPC0gMjMNCnNub3V0JG1vdmVtZW50IDwtIHNub3V0JG1vdmVtZW50ICogZnBzIC8gcGNtDQpzbm91dCRtb3ZlNCA8LSBzbm91dCRtb3ZlbWVudCA+PSA0DQpgYGANCg0KZGV0ZXJtaW5lIGZyZWV6aW5nIGJlaGF2aW9yDQpmb3IgbG9vcCAtIHNsb3cgbW92ZW1lbnQgPj0xLjI4cyAobmVlZCBmcHMpDQpgYGB7cn0NCnBlcmlvZCA8LSBhcy5pbnRlZ2VyKDEuMjgqZnBzKQ0KZnJlZXplIDwtIGMoKQ0KaSA8LSAwDQpyIDwtIDENCnYgPC0gciArIHBlcmlvZCAtIGkNCndoaWxlIChyIDw9IG5yb3coc25vdXQpIC0gcGVyaW9kICsgMSl7DQogIGlmIChzbm91dCRtb3ZlNFtyXSA9PSBGQUxTRSl7DQogICAgaSA8LSBpICsgMQ0KICAgIHYgPC0gciArIHBlcmlvZCAtIGkNCiAgICBpZiAoaSA8IHBlcmlvZCl7DQogICAgICBpZihzdW0oc25vdXQkbW92ZTRbcjp2XSkgPT0gMCl7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgICB9IGVsc2V7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBGQUxTRQ0KICAgICAgfQ0KICAgIH0gZWxzZXsNCiAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgfQ0KICB9IGVsc2V7DQogICAgaSA8LSAwDQogICAgZnJlZXplW3JdIDwtIEZBTFNFDQogIH0NCiAgciA8LSByICsgMQ0KfQ0KDQp2IDwtIG5yb3coc25vdXQpDQp3aGlsZShyIDw9IHYpew0KICBpZihzbm91dCRtb3ZlNFtyXSA9PSBGQUxTRSl7DQogICAgaSA8LSBpICsgMQ0KICAgIGlmKGkgPCBwZXJpb2Qpew0KICAgICAgaWYoc3VtKHNub3V0JG1vdmU0W3I6dl0gPCAxKSl7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgICB9IGVsc2V7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBGQUxTRQ0KICAgICAgfQ0KICAgIH0gZWxzZXsNCiAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgfQ0KICB9IGVsc2V7DQogICAgZnJlZXplW3JdIDwtIEZBTFNFDQogICAgYnJlYWsNCiAgfQ0KICByIDwtIHIgKyAxDQp9DQoNCmlmKHIgPCBucm93KHNub3V0KSl7DQogIGZyZWV6ZVtyOnZdIDwtIEZBTFNFDQp9DQoNCnNub3V0JGZyZWV6ZSA8LSBmcmVlemUNCmBgYA0KDQpzdG9yZSBzdGFydCBmcmFtZSwgc3RvcCBmcmFtZSwgYW5kIGR1cmF0aW9uIChpbiBzZWNvbmRzKSBpbiBhIHNlcGFyYXRlIGRhdGFmcmFtZQ0KYGBge3J9DQpzdGFydCA8LSBjKCkNCnN0b3AgPC0gYygpDQppIDwtIDANCmogPC0gMA0KciA8LSAxDQp3aGlsZSAociA8PSBucm93KHNub3V0KSl7DQogIGlmIChzbm91dCRmcmVlemVbcl0gPT0gVFJVRSl7DQogICAgaSA8LSBpICsgMQ0KICAgIGogPC0gMA0KICAgIGlmIChpID09IDEpew0KICAgICAgc3RhcnQgPC0gYXBwZW5kKHN0YXJ0LCBzbm91dCRmcmFtZVtyXSkNCiAgICB9DQogIH0gZWxzZXsNCiAgICBqIDwtIGogKyAxDQogICAgaSA8LSAwDQogICAgaWYgKGogPT0gMSl7DQogICAgICBzdG9wIDwtIGFwcGVuZChzdG9wLCBzbm91dCRmcmFtZVtyLTFdKQ0KICAgIH0NCiAgfQ0KICByIDwtIHIgKyAxDQp9DQoNCmlmKHNub3V0JGZyZWV6ZVtyLTFdPT1UUlVFKXsNCiAgc3RvcCA8LSBhcHBlbmQoc3RvcCwgc25vdXQkZnJhbWVbci0xXSkNCn0NCg0KZnJlZXplX2RhdGEgPC0gZGF0YS5mcmFtZSgnU3RhcnRGcmFtZScgPSBzdGFydCwgJ1N0b3BGcmFtZScgPSBzdG9wKSAlPiUNCiAgbXV0YXRlKFN0YXJ0RnJhbWU9YXMubnVtZXJpYyhhcy5jaGFyYWN0ZXIoU3RhcnRGcmFtZSkpLCBTdG9wRnJhbWU9YXMubnVtZXJpYyhhcy5jaGFyYWN0ZXIoU3RvcEZyYW1lKSkpICU+JQ0KICBtdXRhdGUoRHVyYXRpb24gPSBTdG9wRnJhbWUvZnBzIC0gU3RhcnRGcmFtZS9mcHMpDQoNCmBgYA0KDQpvdXRwdXQgcmVzdWx0cyBpbiBjc3YNCioqY2hhbmdlIHBhdGhzIGFzIG5lZWRlZCwgcmVtZW1iZXIgdG8gbmFtZSB0aGUgb3V0cHV0IGZpbGVzDQpgYGB7cn0NCndyaXRlX2Nzdihzbm91dCwgJy9Vc2Vycy9hc3VzL0Rlc2t0b3AvVVJTSS9zbm91dC5jc3YnKQ0Kd3JpdGVfY3N2KGZyZWV6ZV9kYXRhLCAnL1VzZXJzL2FzdXMvRGVza3RvcC9VUlNJL2ZyZWV6ZS5jc3YnKQ0KYGBgDQoNCnZpc3VhbGl6YXRpb25zICh0byBiZSBhZGRlZCkNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkZyZWV6aW5nIEJlaGF2aW9yIERldGVjdGlvbiINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQpUaGlzIFItTm90ZWJvb2sgcHJvdmlkZXMgYSB3YXkgdG8gdXNlIG91dHB1dHMgZnJvbSBEZWVwTGFiQ3V0IHRvIGV4dHJhY3QgZnJlZXppbmcgYmVoYXZpb3JzIG9mIHRoZSBtb3VzZQ0KDQoNCmxvYWQgbmVlZGVkIGxpYnJhcmllcw0KYGBge3IgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0NCmxpYnJhcnkocmVhZHIpDQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShnZ3Bsb3QyKQ0KYGBgDQoNCmltcG9ydCBkYXRhc2V0DQoqKmNoYW5nZSBmaWxlIG5hbWUgYXMgbmVlZGVkDQoqKm1ha2Ugc3VyZSB0aGF0IHRoZSBjc3YgZmlsZSBpcyBpbiB0aGUgc2FtZSBmb2xkZXIgYW5zIHRoaXMgciBtYXJrZG93bg0KYGBge3IgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0NCmRhdGEgPC0gcmVhZF9jc3YoInRlc3QuY3N2IikNCmBgYA0KDQpleHRyYWN0IGRhdGEgZm9yIHRoZSBtb3ZlbWVudCBvZiBzbm91dA0Kc2VsZWN0IGNvb3JkaW5hdGVzIGZvciBzbm91dCBvbmx5DQpzZWxlY3Qgb25seSB0aGUgb25lcyB3aXRoID49NjAlIGxpa2VsaWhvb2QNCioqY2hhbmdlIHRoZSAnMTo0JyB0byBjKDEsIHNyYW5nZSkgaWYgc25vdXQgaXMgbm90IHRoZSBmaXJzdCBib2R5IHBhcnQsIHNyYW5nZSBpcyB0aGUgY29sdW1uIGluZGV4ZXMgY29udGFpbmluZyB4LCB5LCBhbmQgbGlrZWxpaG9vZCBmb3Igc25vdXQNCmBgYHtyfQ0Kc25vdXQgPC0gZGF0YVstYygxOjIpLDE6NF0NCmNvbG5hbWVzKHNub3V0KSA8LSBjKCJmcmFtZSIsICJ4IiwgInkiLCAibGlrZWxpaG9vZCIpDQpzbm91dCA8LSBzbm91dCAlPiUNCiAgbXV0YXRlKHggPSBhcy5udW1lcmljKHgpLCB5PWFzLm51bWVyaWMoeSkpICU+JQ0KICBmaWx0ZXIobGlrZWxpaG9vZCA+PSAwLjYpDQpgYGANCg0KYWRkIG5ldyBjb2x1bW4gb2YgbW92ZW1lbnQgb2Ygc25vdXQgYmV0d2VlbiAyIGZyYW1lcyBhbmQgdGhlbiBhdmcgYWNyb3NzIHRocmVlIGZyYW1lcw0KYGBge3J9DQptb3ZlbWVudCA9IGMoKQ0KaSA8LSAxDQp3aGlsZShpIDw9IG5yb3coc25vdXQpIC0gMikNCnsNCiAgbW92ZW1lbnRbaV0gPC0gc3FydChhYnMoc25vdXRbaSsxLCAyXSAtIHNub3V0W2ksIDJdKV4yICsgYWJzKHNub3V0W2krMSwgM10gLSBzbm91dFtpLCAzXSkpDQogIGkgPC0gaSArMQ0KfQ0KbW92ZW1lbnRbbnJvdyhzbm91dCktMV0gPC0gbW92ZW1lbnRbaS0xXQ0KbW92ZW1lbnRbbnJvdyhzbm91dCldIDwtIG1vdmVtZW50W2ktMV0NCm1vdmVtZW50IDwtIGFzLm51bWVyaWMobW92ZW1lbnQpDQpzbm91dCRtb3ZlbWVudCA8LSBtb3ZlbWVudA0KaSA8LSAyDQp3aGlsZShpIDw9IG5yb3coc25vdXQpIC0gMSkNCnsNCiAgc25vdXQkbW92ZW1lbnRbaV0gPC0gKG1vdmVtZW50W2ktMV0gKyBtb3ZlbWVudFtpXSArIG1vdmVtZW50W2krMV0pIC8gMw0KICBpIDwtIGkgKyAxDQp9DQoNCmBgYA0KDQoNCmRldGVybWluZSBmcmVlemluZyBmcmFtZXMNCmNoYW5nZSB1bml0IHRvIGNtL3MNCm1hcmsgeS9uIC0gbW92ZW1lbnQgPCA0Y20vcyAobmVlZCB0byBjYWxjdWxhdGUgYWNjb3JkaW5nIHRvIGZwcyBhbmQgcGl4ZWwtcGVyLWNtKQ0KKipzZXQgZnJhbWUgcGVyIHNlY29uZCB0byBmcHMNCioqc2V0IHBpeGVsIHBlciBjbSB0byBwY20NCmBgYHtyfQ0KZnBzIDwtIDIwDQpwY20gPC0gMjMNCnNub3V0JG1vdmVtZW50IDwtIHNub3V0JG1vdmVtZW50ICogZnBzIC8gcGNtDQpzbm91dCRtb3ZlNCA8LSBzbm91dCRtb3ZlbWVudCA+PSA0DQpgYGANCg0KZGV0ZXJtaW5lIGZyZWV6aW5nIGJlaGF2aW9yDQpmb3IgbG9vcCAtIHNsb3cgbW92ZW1lbnQgPj0xLjI4cyAobmVlZCBmcHMpDQpgYGB7cn0NCnBlcmlvZCA8LSBhcy5pbnRlZ2VyKDEuMjgqZnBzKQ0KZnJlZXplIDwtIGMoKQ0KaSA8LSAwDQpyIDwtIDENCnYgPC0gciArIHBlcmlvZCAtIGkNCndoaWxlIChyIDw9IG5yb3coc25vdXQpIC0gcGVyaW9kICsgMSl7DQogIGlmIChzbm91dCRtb3ZlNFtyXSA9PSBGQUxTRSl7DQogICAgaSA8LSBpICsgMQ0KICAgIHYgPC0gciArIHBlcmlvZCAtIGkNCiAgICBpZiAoaSA8IHBlcmlvZCl7DQogICAgICBpZihzdW0oc25vdXQkbW92ZTRbcjp2XSkgPT0gMCl7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgICB9IGVsc2V7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBGQUxTRQ0KICAgICAgfQ0KICAgIH0gZWxzZXsNCiAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgfQ0KICB9IGVsc2V7DQogICAgaSA8LSAwDQogICAgZnJlZXplW3JdIDwtIEZBTFNFDQogIH0NCiAgciA8LSByICsgMQ0KfQ0KDQp2IDwtIG5yb3coc25vdXQpDQp3aGlsZShyIDw9IHYpew0KICBpZihzbm91dCRtb3ZlNFtyXSA9PSBGQUxTRSl7DQogICAgaSA8LSBpICsgMQ0KICAgIGlmKGkgPCBwZXJpb2Qpew0KICAgICAgaWYoc3VtKHNub3V0JG1vdmU0W3I6dl0gPCAxKSl7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgICB9IGVsc2V7DQogICAgICAgIGZyZWV6ZVtyXSA8LSBGQUxTRQ0KICAgICAgfQ0KICAgIH0gZWxzZXsNCiAgICAgIGZyZWV6ZVtyXSA8LSBUUlVFDQogICAgfQ0KICB9IGVsc2V7DQogICAgZnJlZXplW3JdIDwtIEZBTFNFDQogICAgYnJlYWsNCiAgfQ0KICByIDwtIHIgKyAxDQp9DQoNCmlmKHIgPCBucm93KHNub3V0KSl7DQogIGZyZWV6ZVtyOnZdIDwtIEZBTFNFDQp9DQoNCnNub3V0JGZyZWV6ZSA8LSBmcmVlemUNCmBgYA0KDQpzdG9yZSBzdGFydCBmcmFtZSwgc3RvcCBmcmFtZSwgYW5kIGR1cmF0aW9uIChpbiBzZWNvbmRzKSBpbiBhIHNlcGFyYXRlIGRhdGFmcmFtZQ0KYGBge3J9DQpzdGFydCA8LSBjKCkNCnN0b3AgPC0gYygpDQppIDwtIDANCmogPC0gMA0KciA8LSAxDQp3aGlsZSAociA8PSBucm93KHNub3V0KSl7DQogIGlmIChzbm91dCRmcmVlemVbcl0gPT0gVFJVRSl7DQogICAgaSA8LSBpICsgMQ0KICAgIGogPC0gMA0KICAgIGlmIChpID09IDEpew0KICAgICAgc3RhcnQgPC0gYXBwZW5kKHN0YXJ0LCBzbm91dCRmcmFtZVtyXSkNCiAgICB9DQogIH0gZWxzZXsNCiAgICBqIDwtIGogKyAxDQogICAgaSA8LSAwDQogICAgaWYgKGogPT0gMSl7DQogICAgICBzdG9wIDwtIGFwcGVuZChzdG9wLCBzbm91dCRmcmFtZVtyLTFdKQ0KICAgIH0NCiAgfQ0KICByIDwtIHIgKyAxDQp9DQoNCmlmKHNub3V0JGZyZWV6ZVtyLTFdPT1UUlVFKXsNCiAgc3RvcCA8LSBhcHBlbmQoc3RvcCwgc25vdXQkZnJhbWVbci0xXSkNCn0NCg0KZnJlZXplX2RhdGEgPC0gZGF0YS5mcmFtZSgnU3RhcnRGcmFtZScgPSBzdGFydCwgJ1N0b3BGcmFtZScgPSBzdG9wKSAlPiUNCiAgbXV0YXRlKFN0YXJ0RnJhbWU9YXMubnVtZXJpYyhhcy5jaGFyYWN0ZXIoU3RhcnRGcmFtZSkpLCBTdG9wRnJhbWU9YXMubnVtZXJpYyhhcy5jaGFyYWN0ZXIoU3RvcEZyYW1lKSkpICU+JQ0KICBtdXRhdGUoRHVyYXRpb24gPSBTdG9wRnJhbWUvZnBzIC0gU3RhcnRGcmFtZS9mcHMpDQoNCmBgYA0KDQpvdXRwdXQgcmVzdWx0cyBpbiBjc3YNCioqY2hhbmdlIHBhdGhzIGFzIG5lZWRlZCwgcmVtZW1iZXIgdG8gbmFtZSB0aGUgb3V0cHV0IGZpbGUNCmBgYHtyfQ0Kd3JpdGVfY3N2KGZyZWV6ZV9kYXRhLCAnL1VzZXJzL2FzdXMvRGVza3RvcC9VUlNJL2ZyZWV6ZS5jc3YnKQ0KYGBgDQoNCg==</div>
 
 
 

@@ -156,11 +156,8 @@ freeze_data <- data.frame('StartFrame' = start, 'StopFrame' = stop) %>%
 ```
 
 output results in csv
-**change paths as needed, remember to name the output files
+**change paths as needed, remember to name the output file
 ```{r}
-write_csv(snout, '/Users/asus/Desktop/URSI/snout.csv')
 write_csv(freeze_data, '/Users/asus/Desktop/URSI/freeze.csv')
 ```
-
-visualizations (to be added)
 
