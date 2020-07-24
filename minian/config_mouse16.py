@@ -6,7 +6,7 @@ import numpy as np
 # Path that contains the minian folder (should be "." if working in minian env)
 minian_path = "."
 
-dpath = "./videos/ENTER/PATH/HERE"
+dpath = "./videos/Mouse_16/ENTER/PATH/HERE"
 
 # Determines how videos are cropped in terms of height, width, and length
 subset = None
@@ -81,9 +81,9 @@ param_estimate_shift = {
 # 'stp_size' will make the process faster and cleaner.
 ## CELL SIZE NEEDED
 param_seeds_init = {
-    'wnd_size': 2000,
+    'wnd_size': 2500,
     'method': 'rolling',
-    'stp_size': 1000,
+    'stp_size': 1500,
     'nchunk': 100,
     'max_wnd': 20,
     'diff_thres': 2}
@@ -142,7 +142,7 @@ param_get_noise = {
 ## CELL SIZE NEEDED
 param_first_spatial = {
     'dl_wnd': 15,
-    'sparse_penal': 0.25,
+    'sparse_penal': 0.3,
     'update_background': True,
     'normalize': True,
     'zero_thres': 'eps'}
