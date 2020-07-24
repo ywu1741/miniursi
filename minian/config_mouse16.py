@@ -81,9 +81,9 @@ param_estimate_shift = {
 # 'stp_size' will make the process faster and cleaner.
 ## CELL SIZE NEEDED
 param_seeds_init = {
-    'wnd_size': 2500,
+    'wnd_size': 2000,
     'method': 'rolling',
-    'stp_size': 1500,
+    'stp_size': 1000,
     'nchunk': 100,
     'max_wnd': 20,
     'diff_thres': 2}
