@@ -246,10 +246,10 @@ b_spatial_it2 = save_minian(b_spatial_it2.rename('b'), **param_save_minian)
 f_spatial_it2 = save_minian(f_spatial_it2.rename('f'), **param_save_minian)
 
 # ## CSV commands
-A_Array=np.resize(A,[A.shape[2],A.shape[0]*A.shape[1]])
+A_Array=np.resize(A_temporal_it2,[A_temporal_it2.shape[2],A_temporal_it2.shape[0]*A_temporal_it2.shape[1]])
 np.savetxt(("%s/spatial.csv" % dpath),A_Array,delimiter=',')
-C.to_pandas().to_csv("%s/traces.csv" % dpath)
-S.to_pandas().to_csv("%s/spikes.csv" % dpath)
+C_temporal_it2.to_pandas().to_csv("%s/traces.csv" % dpath)
+S_temporal_it2.to_pandas().to_csv("%s/spikes.csv" % dpath)
 
 
 
