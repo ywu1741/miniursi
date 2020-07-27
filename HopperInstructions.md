@@ -8,20 +8,20 @@ VPN instructions can be found here: https://servicedesk.vassar.edu/solutions/571
 ### 2: Log-in to Hopper
 a.	Open the Terminal and type the command:  
 <code>$ ssh -p 22022 *username*@jr.cs.vassar.edu</code>  
-where *username* is your Vassar username 
-  
+where *username* is your Vassar username
+
 b.	Enter your Hopper password and change your password if you would like (your password and instructions for changing it should have been provided in an e-mail from Matt Tarantino when you were granted access to Hopper)
 
 ### 3: Move to the shared Miniscope directory
 Type the command:  
-<code>$ cd /work/miniscopepipeline/miniursi</code> 
-  
+<code>$ cd /work/miniscopepipeline/miniursi</code>
+
 To examine the contents of our directory, use the command  
-<code>$ ls</code> 
+<code>$ ls</code>
 
 ### 4: Install necessary packages
 Type the following command to execute the bash script and download the necessary packages to run the pipeline. You should only have to do this once unless the bash script is updated or your user environment in Hopper has changed.  
-<code>$ ./install.sh</code> 
+<code>$ ./install.sh</code>
 
 ### 5. Add videos to Hopper from Google Drive
 Add videos to the shared Google Drive “Miniscope Videos”. Make sure you keep videos in appropriate folders otherwise this process will be much harder. For each video, make sure that it is shared so anyone with the link can see the file.  
@@ -60,7 +60,7 @@ To check general information about the nodes type:
 <code>$ sinfo</code>  
 b.	To check the active job queue type:  
 <code>$ squeue</code>  
-These commands will generally tell you what parts of Hopper are in use and what are available. This will inform when/where you run either interactive sessions or batch scripts. 
+These commands will generally tell you what parts of Hopper are in use and what are available. This will inform when/where you run either interactive sessions or batch scripts.
 
 ### 7: Specify the correct directory and config file  
 From the /work/miniscopepipeline/miniursi directory enter the following command:  
@@ -74,7 +74,7 @@ Then, change directory to the minian directory using
 From there, access the editor with the config file you plan to use:  
 <code>$ vi *config_name*</code>  
 Once in the editor, move down to the <code>dpath</code> variable and enter the path to the folder of videos you want to analyze in string format. **AGAIN, DO NOT EDIT ANYTHING ELSE.** Once you are done, exit in the same way and return to the miniursi directory using <code>$ cd ..</code>.  
-Note that these are the same steps necessary to specify the path to the correct folder in the crossregistration file, the only difference is that you will enter <code>$ vi ursi_crossreg.py</code> to access that file. 
+Note that these are the same steps necessary to specify the path to the correct folder in the crossregistration file, the only difference is that you will enter <code>$ vi ursi_crossreg.py</code> to access that file.
 
 ### 8: Run an interactive session
 To start an interactive session, type:  
@@ -115,7 +115,17 @@ Then open an iPython session...
 <code>$ ipython </code>  
 ...and import DLC:  
 <code>import deeplabcut</code>  
-Once this is done, all DeepLabCut commands will be available (more details to come). To exit iPython and return to the container, type:  
+Once this is done, all DeepLabCut commands will be available. Run each line as follows to extract positions.
+<code> config_path = *path_to_config_file* </code>
+<code> deeplabcut.train_network(config_path, displayiters = *displayiters*, saveiters = *saveiters*, maxiters = *maxiters*) </code>
+If unchanged, the defaults are *displayiters* = 1000 (display loss per 1k iterations, highly recommend changing to a higher number), *saveiters* = 150000 (a checkpoint file will be saved every 150k iterations), *maxiters* = 1030000 (maximum training iterations).
+<code> deeplabcut.evaluate_network(config_path) </code>
+<code> deeplabcut.analyze_videos(config_path, *video_path*, save_as_csv=True) </code>
+*video_path* is where the videos you want to analyze is stored and can be entered as a list ['path1', 'path2', 'path3']. If the videos are the ones you used to train the network, they should be in the videos folder of the project, and thus *video_path* = videos.
+<code> deeplabcut.create_labeled_video(config_path, *video_path*, draw_skeleton = True) </code>
+(Optional) To produce plots of the trajectories of body parts throughout the videos, type:
+<code> deeplabcut.plot_trajectories(config_path, *video_path*) </code>
+To exit iPython and return to the container, type:  
 <code>exit()</code>  
 To exit the container, just enter:  
 <code>exit</code>  
@@ -125,17 +135,16 @@ To exit the DeepLabCut environment, type:
 ### X: Creating and running a batch script - FOR FUTURE/NOT YET CONFIGURED ON HOPPER
 Batch scripts in Hopper need to be created and uploaded to our shared environment before they can be called. The script contains resource requests and other job options for the batch. An example of this kind of script is shown below:  
 ![batch1](/img/batch1.png "Batch1")  
-  
+
 The batch script is made up of a header (where you can see all the #SBATCH calls) and the commands to execute the job. The description for most of the header variables are below:  
 ![batch2](/img/batch2.png "Batch2")  
-  
+
 Following the header, the commands of the script are meant to reference the locations of the working directory for the batch and the program file that will be called (in our case the miniscope pipeline). Note that for our project we are going to be using the gpu so make sure to request the gpu partition in the script not general or emc.  
 Once the script has been created locally, you can upload it to our shared directory in Hopper in two ways:  
 1.	Use a graphical user client (WinSCP for windows, CyberDuck for Macs). Once one of these is downloaded, you can connect to the Vassar hostname (jr.cs.vassar.edu) and the port (22022 or just 22 if connected to the VPN) and view Hopper in a more interactive directory (such as Finder on Macs). Then you can just drag and drop your batch files into our directory in Hopper.  
 2.  Use the terminal and the following command:  
 <code>scp -P 22022 *username@local_machine:/path/to/myfile* *username@jr.cs.vassar.edu:/path/to/file-destination*</code>  
-  
+
 Lastly, to execute the batch request you enter the following command:  
 <code>sbatch -*options* *batch-script-file*</code>  
-*-options* are optional manual entry of the batch variables listed above which if entered will supersede whatever is written in the batch script. *batch-script-file* should just be the name of the batch script you wish to run. 
-
+*-options* are optional manual entry of the batch variables listed above which if entered will supersede whatever is written in the batch script. *batch-script-file* should just be the name of the batch script you wish to run.
