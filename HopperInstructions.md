@@ -46,7 +46,8 @@ and then run the following lines:
 <code>>>> from drive_list import SCOPES, store, creds, DRIVE, search, upload</code>  
 <code>>>> upload('*folder_id*')</code>  
 **Note that right now the upload function only works in the drive folder. Calling it from any other folder leads to the API taking over your terminal trying to get you to sign in and eventually crashing (I think Hopper confuses it). After you upload the videos you will have to use Cyberduck or the Microsoft equivalent cloud storage browser to move them into the folder you made for them.**  
-Note that *you will have to have shared permissions of the folder to anyone with the link for this process to work*. Otherwise you will get several permission denied errors.  
+Note that *you will have to have shared permissions of the folder to anyone with the link for this process to work*. Otherwise you will get several permission denied errors. Lastly, Hopper can only handle so many videos at a time. It is suggested that if you have groups of videos that are larger than 15 that you split them evenly in subfolders for processing and run the cross-registration file on them after to unify the whole session.   
+  
 **Note the section below does not yet work - command tries to identify a new randomly named directory, waiting for dev response**  
 If there are individual videos that were not transferred due to not being in the correct original folder or some other issue, you can enter the following command to add that single video to the google drive:  
 <code>gdown https://drive.google.com/uc?id=file_id -O output_directory</code>  
