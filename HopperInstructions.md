@@ -118,6 +118,7 @@ Then open an iPython session...
 <code>import deeplabcut</code>  
 Once this is done, all DeepLabCut commands will be available. Run each line as follows to extract positions.  
 <code> config_path = *path_to_config_file* </code>  
+**Make sure that the project_path and video_sets within the config file are set to Hopper paths**
 <code> deeplabcut.train_network(config_path, displayiters = *displayiters*, saveiters = *saveiters*, maxiters = *maxiters*) </code> 
 If unchanged, the defaults are *displayiters* = 1000 (display loss per 1k iterations, highly recommend changing to a higher number), *saveiters* = 150000 (a checkpoint file will be saved every 150k iterations), *maxiters* = 1030000 (maximum training iterations).  
 <code> deeplabcut.evaluate_network(config_path) </code> 
