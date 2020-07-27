@@ -115,16 +115,16 @@ Then open an iPython session...
 <code>$ ipython </code>  
 ...and import DLC:  
 <code>import deeplabcut</code>  
-Once this is done, all DeepLabCut commands will be available. Run each line as follows to extract positions.
-<code> config_path = *path_to_config_file* </code>
-<code> deeplabcut.train_network(config_path, displayiters = *displayiters*, saveiters = *saveiters*, maxiters = *maxiters*) </code>
-If unchanged, the defaults are *displayiters* = 1000 (display loss per 1k iterations, highly recommend changing to a higher number), *saveiters* = 150000 (a checkpoint file will be saved every 150k iterations), *maxiters* = 1030000 (maximum training iterations).
-<code> deeplabcut.evaluate_network(config_path) </code>
-<code> deeplabcut.analyze_videos(config_path, *video_path*, save_as_csv=True) </code>
-*video_path* is where the videos you want to analyze is stored and can be entered as a list ['path1', 'path2', 'path3']. If the videos are the ones you used to train the network, they should be in the videos folder of the project, and thus *video_path* = videos.
-<code> deeplabcut.create_labeled_video(config_path, *video_path*, draw_skeleton = True) </code>
-(Optional) To produce plots of the trajectories of body parts throughout the videos, type:
-<code> deeplabcut.plot_trajectories(config_path, *video_path*) </code>
+Once this is done, all DeepLabCut commands will be available. Run each line as follows to extract positions.  
+<code> config_path = *path_to_config_file* </code>  
+<code> deeplabcut.train_network(config_path, displayiters = *displayiters*, saveiters = *saveiters*, maxiters = *maxiters*) </code> 
+If unchanged, the defaults are *displayiters* = 1000 (display loss per 1k iterations, highly recommend changing to a higher number), *saveiters* = 150000 (a checkpoint file will be saved every 150k iterations), *maxiters* = 1030000 (maximum training iterations).  
+<code> deeplabcut.evaluate_network(config_path) </code> 
+<code> deeplabcut.analyze_videos(config_path, *video_path*, save_as_csv=True) </code> 
+*video_path* is where the videos you want to analyze is stored and can be entered as a list ['path1', 'path2', 'path3']. If the videos are the ones you used to train the network, they should be in the videos folder of the project, and thus *video_path* = videos.  
+<code> deeplabcut.create_labeled_video(config_path, *video_path*, draw_skeleton = True) </code> 
+(Optional) To produce plots of the trajectories of body parts throughout the videos, type:  
+<code> deeplabcut.plot_trajectories(config_path, *video_path*) </code>  
 To exit iPython and return to the container, type:  
 <code>exit()</code>  
 To exit the container, just enter:  
