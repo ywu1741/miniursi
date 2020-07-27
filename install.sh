@@ -58,4 +58,4 @@ pip install --user oauth2client
 #     wxPython
 # pip install --user wxPython
 
-pip install --user tensorflow
+# pip install --user tensorflow
