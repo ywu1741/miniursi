@@ -2,6 +2,7 @@
 title: "Temporal_Analysis"
 output: html_document
 ---
+(UNFINISHED)
 
 To use this notebook, make sure that it is in the same folder as both the spikes.csv and traces.csv files you want to analyze. 
 ```{r}
