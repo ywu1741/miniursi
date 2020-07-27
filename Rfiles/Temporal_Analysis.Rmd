@@ -1,0 +1,43 @@
+---
+title: "Temporal_Analysis"
+output: html_document
+---
+
+To use this notebook, make sure that it is in the same folder as both the spikes.csv and traces.csv files you want to analyze. 
+```{r}
+library(tidyverse)
+library(data.table)
+```
+
+```{r}
+spikes <- read_csv("spikes.csv")
+traces <- read_csv("traces.csv")
+```
+
+## Adjust Data Table
+Here you need to set the second number in the c() command (which says 12999 right now) to be the last frame number in the dataset. Generally, this should be the number of variables you see minus 2 (although if this raises an error you can check manually)
+
+```{r}
+spikes <- spikes %>%
+  pivot_longer(c('0':'12999'), names_to="frame", values_to="spikes")
+traces <- traces %>%
+  pivot_longer(c('0':'12999'), names_to="frame", values_to="traces")
+
+spikes$traces <- traces$traces
+spikes$frame <- as.numeric(spikes$frame)
+
+temporal <- spikes %>% 
+  pivot_longer(c('spikes', 'traces'), names_to="reading", values_to="y")
+temporal <- arrange(temporal, frame)
+```
+
+## Plot Traces & Spikes 
+
+Below you can enter whichever unit you want to examine with a plot. If you want to look at all of them, you can attach a facet_wrap command (although it will make all the plots very small)
+```{r}
+temporal0 <- filter(temporal, unit_id==17)
+
+ggplot(data = temporal0, aes(x=frame, y=y, color=reading)) +
+  geom_smooth()
+```
+
