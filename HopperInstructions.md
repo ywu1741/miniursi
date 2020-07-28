@@ -86,10 +86,12 @@ You should see that you have been moved to @lambda-server. After either of these
 Note that the environment when you launch an interactive session, the environment is based on the environment when you launched the session, extra variables set automatically by Slurm, and settings in the bash file (which should install the necessary packages for the pipeline).   
 To run the pipeline script in the interactive session, check that you are in the right directory and type:  
 <code>$ python3 ursi_pipeline.py</code>  
-To run the cross-registration script in the interactive session, make sure you have run the pipeline script on all the videos to be cross registered. Then change the parameter ‘dpath’ in the config_crossreg.py file within the minian folder to the directory containing the videos to be cross-registered and their corresponding pipeline_output folders (e.g. to cross register all sessions for Animal15, dpath should be set to ./videos/Animal15). Note that each pair of videos + output should be in a unique folder.  
+
+### 9: Cross-Registration in an interactive session
+To run the cross-registration script in the interactive session, make sure you have run the pipeline script on all the videos to be cross registered. Then change the parameter ‘dpath’ in the config_crossreg.py file within the minian folder to the directory containing the videos to be cross-registered and their corresponding pipeline_output folders (e.g. to cross register all sessions for Animal15, dpath should be set to ./videos/Animal15). The steps to do this are the same as for the normal pipeline in (7). Additionally, you will have to set the sess variable in the ursi_crossreg.py pipeline file (found in the normal miniursi directory). This must be set to the list of the names of the folders you are cross-registering. Note that each pair of videos + output should be in a unique folder. Once all that is set, run the following command from the miniursi directory.  
 <code>$ python3 ursi_crossreg.py</code>
 
-### 9: Configure DeepLabCut Environment
+### 10: Configure DeepLabCut Environment
 These steps only need to be done once to make sure the the DLC environment is configured with your user. First, start an interactive session as specified in (7). Then, enter this command to make sure conda is configured with your user:  
 <code>/anaconda3/condabin/conda init bash</code>  
 If there are changes made in this step, you may have to restart the terminal for them to take effect. Once that is set, run the following command to create the DLC-GPU environment:  
@@ -98,7 +100,7 @@ Once the environment has been created, you should be able to use the command
 <code>$ conda activate DLC-GPU</code>  
 to activate the environment. Then, see below for the steps on how to run DLC.  
 
-### 10: Use DeepLabCut  
+### 11: Use DeepLabCut  
 To use DeepLabCut, first make sure you are in the docker directory:  
 <code>$ cd $HOME/work/miniscopepipeline/miniursi/Docker4DeepLabCut2.0</code>  
 Then start an interactive session on the gpu in Hopper as specified in (7). Once you are in the session, enter the following command:  
@@ -133,6 +135,12 @@ To exit the container, just enter:
 <code>exit</code>  
 To exit the DeepLabCut environment, type:  
 <code>$ conda deactivate</code>  
+
+### 12.1: Downloading Results (Pipeline)
+For now, this is easiest to do from a graphical user client (WinSCP for windows, CyberDuck for Macs) where you can interact with Hopper like a normal folder directory. The pipeline outputs three different .csv files for each folder it is run on. traces.csv holds the temporal information about the calcium traces detected by the pipeline for each identified neuron. spikes.csv holds the temporal information of the inferred spiking of each identified neuron. Lastly, spatial.csv holds the spatial information for each of the identified units (although at this point this file is not critical). Additionally, when cross-registration is run there will be a .csv called mappings.csv that tells you which units correspond with one another across sessions. These files are used in the R notebooks in this Github (which are currently in the works).  
+
+### 12.2 Downloading Results (DLC)
+NEED INFO. 
 
 ### X: Creating and running a batch script - FOR FUTURE/NOT YET CONFIGURED ON HOPPER
 Batch scripts in Hopper need to be created and uploaded to our shared environment before they can be called. The script contains resource requests and other job options for the batch. An example of this kind of script is shown below:  
