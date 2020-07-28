@@ -2,9 +2,8 @@
 # coding: utf-8
 
 # # load config
-dpath = "./videos/ENTER/PATH/HERE/
 
-from minian.config_crossreg import minian_path, f_pattern, id_dims, param_t_dist, output_size
+from minian.config_crossreg import dpath, minian_path, f_pattern, id_dims, param_t_dist, output_size
 
 # # Load Modules
 
