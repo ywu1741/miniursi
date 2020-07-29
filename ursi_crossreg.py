@@ -58,7 +58,6 @@ hv_temps = (hv.Dataset(temps).to(hv.Image, kdims=['width', 'height'])
             .opts(**opts_im).layout('session').cols(1))
 hv_temps_sh = (hv.Dataset(temps_sh).to(hv.Image, kdims=['width', 'height'])
             .opts(**opts_im).layout('session').cols(1))
-display(hv_temps + hv_temps_sh)
 
 hv.output(size=output_size)
 opts_im = {
