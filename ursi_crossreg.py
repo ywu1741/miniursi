@@ -49,6 +49,27 @@ shifts = shifts.rename('shifts')
 temps_sh = apply_shifts(temps, shifts).compute().rename('temps_shifted')
 shiftds = xr.merge([temps, shifts, temps_sh])
 
+
+hv.output(size=output_size)
+opts_im = {
+    'aspect': shiftds.sizes['width'] / shiftds.sizes['height'],
+    'frame_width': 500, 'cmap': 'viridis'}
+hv_temps = (hv.Dataset(temps).to(hv.Image, kdims=['width', 'height'])
+            .opts(**opts_im).layout('session').cols(1))
+hv_temps_sh = (hv.Dataset(temps_sh).to(hv.Image, kdims=['width', 'height'])
+            .opts(**opts_im).layout('session').cols(1))
+display(hv_temps + hv_temps_sh)
+
+hv.output(size=output_size)
+opts_im = {
+    'aspect': shiftds.sizes['width'] / shiftds.sizes['height'],
+    'frame_width': 500, 'cmap': 'viridis'}
+window = shiftds['temps_shifted'].isnull().sum('session')
+window, temps_sh = xr.broadcast(window, shiftds['temps_shifted'])
+hv_wnd = hv.Dataset(window, kdims=list(window.dims)).to(hv.Image, ['width', 'height'])
+hv_temps = hv.Dataset(temps_sh, kdims=list(temps_sh.dims)).to(hv.Image, ['width', 'height'])
+hv_wnd.opts(**opts_im).relabel("Window") + hv_temps.opts(**opts_im).relabel("Shifted Templates")
+
 # ## apply shifts and set window
 
 # In[8]:
