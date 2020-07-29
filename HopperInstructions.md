@@ -125,7 +125,7 @@ Once this is done, all DeepLabCut commands will be available. Run each line as f
 If unchanged, the defaults are *displayiters* = 1000 (display loss per 1k iterations, highly recommend changing to a higher number), *saveiters* = 150000 (a checkpoint file will be saved every 150k iterations), *maxiters* = 1030000 (maximum training iterations).    
 <code> deeplabcut.evaluate_network(config_path) </code>   
 <code> deeplabcut.analyze_videos(config_path, *video_path*, save_as_csv=True) </code>   
-*video_path* is where the videos you want to analyze is stored and can be entered as a list ['path1', 'path2', 'path3']. If the videos are the ones you used to train the network, they should be in the videos folder of the project, and thus *video_path* = videos.  
+*video_path* is where the videos you want to analyze are stored and must be entered as a list ['path1', 'path2', 'path3']. All videos with extension .avi (default) under the paths will be analyzed.  
 <code> deeplabcut.create_labeled_video(config_path, *video_path*, draw_skeleton = True) </code>   
 (Optional) To produce plots of the trajectories of body parts throughout the videos, type:   
 <code> deeplabcut.plot_trajectories(config_path, *video_path*) </code>    
