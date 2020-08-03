@@ -1,6 +1,19 @@
 # miniursi
 
-Miniscope and behavioral data analysis pipeline from Vassar College based upon MiniAn, CaImAn, and DeepLabCut.
+A Miniscope and behavioral data analysis pipeline from Vassar College based upon MiniAn and DeepLabCut.
+
+## Getting Started  
+Welcome to the Vassar Miniscope Project! If you are new to the project please read through this section as it will direct you through this Github repository and also direct you to some other important resources for familiarizing yourself with the miniscope as well as the programs we are using here to process its data.  
+  
+Generally, all the files you need to understand our pipeline can be found in the instruct folder. This includes various markdown and jupyter files describing how to tune the pipeline and DeepLabCut to the data as well as how to run everything on the Hopper computer cluster. The minian folder holds all the specific groups of functions necessary to run the miniscope pipeline while the drive folder holds the functions necessary to upload your video data from Google Drive onto Hopper. Lastly, the Rfiles folder holds R scripts for post-processing analysis.   
+
+To familiarize yourself with the pipeline part of the process, the following sources are recommended:  
+1) Check out the Resendez et al. (2016) paper to get to know the miniscope itself including the procedure for using it in a laboratory setting as well as the data that it produces.  
+2) Read through the *pipeline_noted.ipynb* jupyter notebook. It is very dense but contains the exact step-by-step reasoning that went into the original pipeline from the DeniseCaiLab including all of the math and an explanation of the transition from video data to the array that the pipeline uses to manipulate that video.  
+  
+To familiarize yourself with the DeepLabCut part of the process, the following sources are recommended:  
+1) Read the DeepLabCut_User_Guide.pdf file. This contains an entry-level explanation of how DeepLabCut works and what you can accomplish with it.  
+2) Look at the dlc_functions.md file to get a closer look at the actual code behind DeepLabCut. This list should contain everything you need as specified in the dlc_instructions.md file to successfully process behavioral data.  
 
 ## Run Instructions
 ### MINISCOPE
